@@ -47,16 +47,6 @@ function Footer() {
                   <i className="fa-solid fa-phone"></i> +91 9945636964
                 </a>
               </li>
-              <li>
-                <a href="mailto:sales@zaglobalexports.com">
-                  <i className="fa-solid fa-envelope"></i> sales@zaglobalexports.com
-                </a>
-              </li>
-              <li>
-                <a href="mailto:exports@zaglobalexports.com">
-                  <i className="fa-solid fa-envelope"></i> exports@zaglobalexports.com
-                </a>
-              </li>
 
             </ul>
           </div>

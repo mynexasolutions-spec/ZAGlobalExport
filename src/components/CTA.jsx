@@ -12,14 +12,6 @@ function CTA() {
                 <i className="fa-solid fa-phone"></i>
                 <a href="tel:+919945636964">+91 9945636964</a>
               </div>
-              <div className="contact-item">
-                <i className="fa-solid fa-envelope"></i>
-                <a href="mailto:sales@zaglobalexports.com">sales@zaglobalexports.com</a>
-              </div>
-              <div className="contact-item">
-                <i className="fa-solid fa-envelope-open-text"></i>
-                <a href="mailto:exports@zaglobalexports.com">exports@zaglobalexports.com</a>
-              </div>
 
             </div>
           </div>

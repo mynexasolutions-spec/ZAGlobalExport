@@ -10,13 +10,30 @@ const productLinks = [
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((isOpen) => {
+      if (isOpen) {
+        setIsProductsOpen(false);
+      }
+      return !isOpen;
+    });
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+    setIsProductsOpen(false);
+  };
+
+  const handleProductsClick = (event) => {
+    if (!isMenuOpen) {
+      closeMenu();
+      return;
+    }
+
+    event.preventDefault();
+    setIsProductsOpen((isOpen) => !isOpen);
   };
 
   return (
@@ -33,9 +50,8 @@ function Header() {
         <nav className={`navbar ${isMenuOpen ? 'open' : ''}`}>
           <ul className="nav-links">
             <li><NavLink to="/" end onClick={closeMenu}>Home</NavLink></li>
-            <li><NavLink to="/about" onClick={closeMenu}>About Us</NavLink></li>
-            <li className="nav-dropdown">
-              <NavLink to="/products" onClick={closeMenu}>
+            <li className={`nav-dropdown ${isProductsOpen ? 'open' : ''}`}>
+              <NavLink to="/products" onClick={handleProductsClick}>
                 Products <i className="fa-solid fa-chevron-down nav-icon"></i>
               </NavLink>
               <ul className="dropdown-menu">
@@ -49,6 +65,7 @@ function Header() {
             <li><NavLink to="/quality-food-safety" onClick={closeMenu}>Quality &amp; Food Safety</NavLink></li>
             <li><NavLink to="/markets" onClick={closeMenu}>Markets</NavLink></li>
             <li><NavLink to="/export-logistics" onClick={closeMenu}>Export &amp; Logistics</NavLink></li>
+            <li><NavLink to="/about" onClick={closeMenu}>About Us</NavLink></li>
             <li><NavLink to="/contact" onClick={closeMenu}>Contact</NavLink></li>
             <li className="mobile-only">
               <Link to="/contact" className="btn btn-primary" onClick={closeMenu} style={{ display: 'inline-block', marginTop: '10px' }}>

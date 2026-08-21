@@ -1,52 +1,50 @@
 import { Link } from 'react-router-dom';
 
-import grainsImg from '../../products/grains.webp';
-
 const productsList = [
   {
-    image: '/images/food-items.webp',
+    image: '/images/rice.jpeg',
     title: 'Rice',
     description: 'Indian rice varieties suitable for retail, wholesale, catering, foodservice and institutional applications.',
     action: 'Request Rice Specifications',
   },
   {
-    image: '/images/food-items2.webp',
+    image: '/images/basmati-rice.jpeg',
     title: 'Basmati Rice',
     description: 'Basmati rice supply can be explored based on required grade, grain characteristics, packing and quantity.',
     action: 'Request Specifications',
   },
   {
-    image: '/images/food-items.webp',
+    image: '/images/non-basmati-rice.jpeg',
     title: 'Non-Basmati Rice',
     description: 'Non-basmati rice options can be sourced according to customer specifications and market requirements.',
     action: 'Send Requirement',
   },
   {
-    image: grainsImg,
+    image: '/images/grains.jpeg',
     title: 'Pulses & Legumes',
     description: 'Toor dal, moong dal, masoor dal, chana dal, chickpeas and other pulses can be sourced by grade and packing need.',
     action: 'Request Pulses Catalogue',
   },
   {
-    image: '/images/hero-banner.webp',
+    image: '/images/bananas-fresh-produce.jpeg',
     title: 'Bananas & Fresh Produce',
     description: 'Fresh produce programs can be discussed based on variety, size, grade, maturity, packaging, volume and destination.',
     action: 'Enquire About Fresh Produce',
   },
   {
-    image: grainsImg,
+    image: '/images/grains.jpeg',
     title: 'Grains',
     description: 'A broader grain portfolio can be developed around buyer requirements and market opportunities.',
     action: 'Send Requirement',
   },
   {
-    image: '/images/food-items2.webp',
+    image: '/images/grains.jpeg',
     title: 'Spices',
     description: 'Indian spices can be explored subject to product availability, specifications, packing and commercial requirements.',
     action: 'Discuss Requirements',
   },
   {
-    image: '/images/food-items.webp',
+    image: '/images/rice.jpeg',
     title: 'Other Food Products',
     description: 'Flour, oilseeds, processed food products and other food commodities can be reviewed based on your requirement.',
     action: 'Send Your Requirement',
