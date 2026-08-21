@@ -2,28 +2,28 @@ import { Link } from 'react-router-dom';
 
 const products = [
   {
-    image: '/images/food-items.webp',
+    image: '/images/rice.jpeg',
     title: 'Rice',
     description: 'Indian rice varieties suitable for retail, wholesale, catering, foodservice and institutional applications.',
     action: 'View Rice Products',
     to: '/products#rice',
   },
   {
-    image: '/images/food-items2.webp',
+    image: '/images/grains.jpeg',
     title: 'Pulses & Legumes',
     description: 'Quality pulses and legumes sourced according to customer specifications and market requirements.',
     action: 'View Pulses',
     to: '/products#pulses-legumes',
   },
   {
-    image: '/images/hero-banner.webp',
+    image: '/images/bananas-fresh-produce.jpeg',
     title: 'Bananas & Fresh Produce',
     description: 'Fresh agricultural products sourced through suitable supply partners for export markets.',
     action: 'View Fresh Produce',
     to: '/products#fresh-produce',
   },
   {
-    image: '/images/food-items.webp',
+    image: '/images/grains.jpeg',
     title: 'Other Food Products',
     description: 'Grains, spices, flour, oilseeds and other food commodities can be explored based on buyer requirements.',
     action: 'View All Products',
