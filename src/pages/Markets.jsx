@@ -23,6 +23,18 @@ const markets = [
     country: 'Bahrain',
     buyers: 'Foodservice | Distribution | Wholesale | Hospitality',
   },
+  {
+    country: 'Europe',
+    buyers: 'Import Distribution | Retail | Foodservice | Wholesale | Institutional Buyers',
+  },
+  {
+    country: 'Africa',
+    buyers: 'Wholesale | Distribution | Retail | Foodservice | Institutional Supply',
+  },
+  {
+    country: 'America',
+    buyers: 'Import Distribution | Retail | Foodservice | Wholesale',
+  },
 ];
 
 function Markets() {
@@ -39,8 +51,8 @@ function Markets() {
         <div className="container">
           <div className="section-header text-center">
             <span className="section-subtitle">OUR TARGET MARKETS</span>
-            <h2>Middle East Food Supply Focus</h2>
-            <p>We support professional buyers across key regional markets with sourcing, documentation and export coordination.</p>
+            <h2>Global Food Supply Focus</h2>
+            <p>We support professional buyers across the Middle East and key global markets with sourcing, documentation and export coordination.</p>
           </div>
           <div className="card-grid-3">
             {markets.map((market) => (

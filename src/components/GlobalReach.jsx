@@ -16,7 +16,7 @@ function GlobalReach() {
             <p>ZA GLOBAL EXPORTS connects reliable Indian food sources with professional buyers across Saudi Arabia, the United Arab Emirates, Qatar, Kuwait, Oman, Bahrain and other international markets.</p>
             <ul className="reach-features">
               <li><i className="fa-solid fa-check-circle text-primary"></i> India-based food sourcing network</li>
-              <li><i className="fa-solid fa-check-circle text-primary"></i> Middle East buyer focus</li>
+              <li><i className="fa-solid fa-check-circle text-primary"></i> Focusing international buyers and their requirements</li>
               <li><i className="fa-solid fa-check-circle text-primary"></i> Export documentation and logistics support</li>
             </ul>
           </div>

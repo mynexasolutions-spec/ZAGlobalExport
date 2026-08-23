@@ -8,12 +8,13 @@ function Footer() {
           <div className="footer-col about-col">
             <Link to="/" className="logo footer-logo">
               <img src="/ZA-logo.png" alt="ZA GLOBAL EXPORTS" />
+              <span className="logo-tagline">From India&rsquo;s farms to the global food market</span>
             </Link>
-            <p>From India's Farms to the Global Food Market. Quality Food Products | Reliable Supply | Global Partnerships.</p>
+            <p>Quality Food Products | Reliable Supply | Global Partnerships.</p>
             <div className="social-links">
-              {/* Placeholder social links until official ZA GLOBAL EXPORTS URLs are provided. */}
-              <a href="#" aria-label="LinkedIn placeholder"><i className="fa-brands fa-linkedin-in"></i></a>
-              <a href="#" aria-label="Instagram placeholder"><i className="fa-brands fa-instagram"></i></a>
+              {/* Placeholder social link until official ZA GLOBAL EXPORTS Facebook URL is provided. */}
+              <a href="https://www.linkedin.com/in/za-global-exports-4a66a2430/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://www.instagram.com/ZAGlobalexports_31" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i className="fa-brands fa-instagram"></i></a>
               <a href="#" aria-label="Facebook placeholder"><i className="fa-brands fa-facebook-f"></i></a>
             </div>
           </div>
@@ -36,6 +37,8 @@ function Footer() {
               <li><Link to="/products#rice">Rice</Link></li>
               <li><Link to="/products#pulses-legumes">Pulses &amp; Legumes</Link></li>
               <li><Link to="/products#fresh-produce">Bananas &amp; Fresh Produce</Link></li>
+              <li><Link to="/products#spices">Spices</Link></li>
+              <li><Link to="/products#edible-oils">Edible Oils</Link></li>
               <li><Link to="/products#other-food-products">Other Food Products</Link></li>
             </ul>
           </div>

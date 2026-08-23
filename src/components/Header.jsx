@@ -5,6 +5,8 @@ const productLinks = [
   { to: '/products#rice', label: 'Rice' },
   { to: '/products#pulses-legumes', label: 'Pulses & Legumes' },
   { to: '/products#fresh-produce', label: 'Bananas & Fresh Produce' },
+  { to: '/products#spices', label: 'Spices' },
+  { to: '/products#edible-oils', label: 'Edible Oils' },
   { to: '/products#other-food-products', label: 'Other Food Products' },
 ];
 
@@ -41,6 +43,7 @@ function Header() {
       <div className="container nav-container">
         <Link to="/" className="logo" onClick={closeMenu}>
           <img src="/ZA-logo.png" alt="ZA GLOBAL EXPORTS" />
+          <span className="logo-tagline">From India&rsquo;s farms to the global food market</span>
         </Link>
         
         <div className="menu-toggle" onClick={toggleMenu}>

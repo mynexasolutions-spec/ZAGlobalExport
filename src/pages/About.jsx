@@ -15,7 +15,11 @@ function About() {
           <div className="section-header text-center">
             <span className="section-subtitle">WHO WE ARE</span>
             <h2>ZA GLOBAL EXPORTS</h2>
-            <p>ZA GLOBAL EXPORTS is an India-based food export company focused on sourcing and supplying quality agricultural and food products to professional buyers across international markets.</p>
+          </div>
+
+          <div className="about-lead">
+            <p>At ZA GLOBAL EXPORTS, we pride ourselves on delivering high-quality food products to our customers. Whether in India, the Middle East or around the world, our promise is to serve healthy by sourcing and serving nutrient-rich foods that delight and nourish our customers. Over time, we have expanded our product range to offer some of the finest pulses, rice, spices, and fresh fruits and vegetables, and more. Our dedicated team of trained professionals oversees every step of the export process, ensuring the selection of quality products, careful processing, and timely delivery to meet your specific requirements. As an ISO-certified company with all necessary legal export permissions, we adhere to industry&rsquo;s standards with confidence and precision.</p>
+            <p>ZA GLOBAL EXPORTS guarantees that our food products are packed with nutrients, farm-fresh goodness, and the highest standards of cleanliness.</p>
           </div>
 
           <div className="about-grid">

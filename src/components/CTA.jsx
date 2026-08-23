@@ -83,7 +83,7 @@ function CTA() {
                 <i className="fa-brands fa-whatsapp"></i> Send Requirement
               </button>
             </form>
-            <p className="business-markets">Business enquiries: India | Saudi Arabia | UAE | Qatar | Kuwait | Oman | Bahrain</p>
+            <p className="business-markets">Business enquiries: India | Saudi Arabia | UAE | Qatar | Kuwait | Oman | Bahrain | Europe | Africa | Other Countries</p>
           </div>
         </div>
       </div>
