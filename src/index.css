@@ -1054,16 +1054,21 @@ img {
   }
 
   .certifications img {
-    height: 40px;
-    width: auto;
+    width: 52px;
+    height: 52px;
+    padding: 8px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: var(--white);
     opacity: 0.8;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     filter: grayscale(20%);
   }
 
   .certifications img:hover {
     opacity: 1;
     filter: grayscale(0%);
+    transform: translateY(-2px);
   }
 
   @media (max-width: 768px) {
@@ -1071,7 +1076,9 @@ img {
       gap: 12px;
     }
     .certifications img {
-      height: 34px;
+      width: 46px;
+      height: 46px;
+      padding: 7px;
     }
   }
 
