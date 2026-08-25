@@ -8,7 +8,7 @@ const productsList = [
     action: 'Request Rice Specifications',
   },
   {
-    image: '/images/basmati rice.png',
+    image: '/images/basmati-rice.webp',
     title: 'Basmati Rice',
     description: 'Basmati rice supply can be explored based on required grade, grain characteristics, packing and quantity.',
     action: 'Request Specifications',
@@ -45,8 +45,8 @@ const productsList = [
   },
   {
     image: '/images/palm-oil.webp',
-    title: 'Palm Oil',
-    description: 'Premium refined, bleached and deodorized (RBD) palm oil can be supplied to meet international food safety standards.',
+    title: 'Edible Oil',
+    description: 'Premium-quality edible oils, refined and processed to meet international food safety and quality standards.',
     action: 'Request Specifications',
   },
   {

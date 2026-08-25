@@ -8,7 +8,7 @@ function Footer() {
           <div className="footer-col about-col">
             <Link to="/" className="logo footer-logo">
               <img src="/ZA-logo.png" alt="ZA GLOBAL EXPORTS" />
-              <span className="logo-tagline">From India&rsquo;s farms to the global food market</span>
+              <span className="logo-tagline">Connecting quality food products from India to Global Markets</span>
             </Link>
             <p>Quality Food Products | Reliable Supply | Global Partnerships.</p>
             <div className="social-links">
@@ -16,6 +16,12 @@ function Footer() {
               <a href="https://www.linkedin.com/in/za-global-exports-4a66a2430/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i className="fa-brands fa-linkedin-in"></i></a>
               <a href="https://www.instagram.com/ZAGlobalexports_31" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i className="fa-brands fa-instagram"></i></a>
               <a href="#" aria-label="Facebook placeholder"><i className="fa-brands fa-facebook-f"></i></a>
+            </div>
+            <div className="certifications">
+              <img src="/fssai.png" alt="FSSAI Certified" />
+              <img src="/apeda.png" alt="APEDA Registered" />
+              <img src="/ISO22000.png" alt="ISO 22000 Certified" />
+              <img src="/HACCP.png" alt="HACCP Certified" />
             </div>
           </div>
           <div className="footer-col">
@@ -50,7 +56,11 @@ function Footer() {
                   <i className="fa-solid fa-phone"></i> +91 9945636964
                 </a>
               </li>
-
+              <li>
+                <a href="mailto:info@zaglobalimpex.com">
+                  <i className="fa-solid fa-envelope"></i> info@zaglobalimpex.com
+                </a>
+              </li>
             </ul>
           </div>
         </div>

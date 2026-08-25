@@ -30,7 +30,7 @@ const products = [
     to: '/products#spices',
   },
   {
-    image: '/images/palm-oil.webp',
+    image: '/images/Edible Oils/palm oil.png',
     title: 'Edible Oils',
     description: 'Premium refined edible oils, including palm and sunflower oil, supplied to international food safety standards.',
     action: 'View Edible Oils',

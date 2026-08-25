@@ -5,7 +5,7 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
-import ProductsPage from './pages/ProductsPage';
+import ProductsPage from '../public/images/ProductsPage';
 import QualityFoodSafety from './pages/QualityFoodSafety';
 import Markets from './pages/Markets';
 import ExportLogistics from './pages/ExportLogistics';
