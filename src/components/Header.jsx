@@ -6,8 +6,6 @@ const productLinks = [
   { to: '/products#pulses-legumes', label: 'Pulses & Legumes' },
   { to: '/products#fresh-produce', label: 'Bananas & Fresh Produce' },
   { to: '/products#spices', label: 'Spices' },
-  { to: '/products#edible-oils', label: 'Edible Oils' },
-  { to: '/products#other-food-products', label: 'Other Food Products' },
 ];
 
 function Header() {

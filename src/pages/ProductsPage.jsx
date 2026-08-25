@@ -1,73 +1,13 @@
-import { Link } from 'react-router-dom';
-
-const productsList = [
-  {
-    image: '/images/rice.jpeg',
-    title: 'Rice',
-    description: 'Indian rice varieties suitable for retail, wholesale, catering, foodservice and institutional applications.',
-    action: 'Request Rice Specifications',
-  },
-  {
-    image: '/images/basmati rice.png',
-    title: 'Basmati Rice',
-    description: 'Basmati rice supply can be explored based on required grade, grain characteristics, packing and quantity.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/non-basmati-rice.webp',
-    title: 'Non-Basmati Rice',
-    description: 'Non-basmati rice options can be sourced according to customer specifications and market requirements.',
-    action: 'Send Requirement',
-  },
-  {
-    image: '/images/sella-rice.webp',
-    title: 'Sella Rice',
-    description: 'Sella (parboiled) rice can be sourced according to required grade, grain characteristics, packing and quantity.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/grains.jpeg',
-    title: 'Pulses & Legumes',
-    description: 'Toor dal, moong dal, masoor dal, chana dal, chickpeas and other pulses can be sourced by grade and packing need.',
-    action: 'Request Pulses Catalogue',
-  },
-  {
-    image: '/images/bananas-fresh-produce.jpeg',
-    title: 'Bananas & Fresh Produce',
-    description: 'Fresh produce programs can be discussed based on variety, size, grade, maturity, packaging, volume and destination.',
-    action: 'Enquire About Fresh Produce',
-  },
-  {
-    image: '/images/spices.webp',
-    title: 'Spices',
-    description: 'Indian spices can be explored subject to product availability, specifications, packing and commercial requirements.',
-    action: 'Discuss Requirements',
-  },
-  {
-    image: '/images/palm-oil.webp',
-    title: 'Palm Oil',
-    description: 'Premium refined, bleached and deodorized (RBD) palm oil can be supplied to meet international food safety standards.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/sunflower-oil.webp',
-    title: 'Sunflower Oil',
-    description: 'Premium refined sunflower oil can be supplied to catering companies, retailers and wholesalers worldwide.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/other-products.webp',
-    title: 'Other Food Products',
-    description: 'Flour, oilseeds, processed food products and other food commodities can be reviewed based on your requirement.',
-    action: 'Send Your Requirement',
-  },
-];
+import { useEffect, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const detailSections = [
   {
     id: 'rice',
     subtitle: 'RICE',
     title: 'Rice',
+    summary: 'Indian rice varieties for retail, wholesale, catering, foodservice and institutional buyers.',
+    cardImage: '/images/rice/rice.png',
     image: '/images/rice/golden basmati rice.png',
     categoryImages: [
       { name: 'White Basmati Rice', src: '/images/rice/white basmati rice.png' },
@@ -87,6 +27,7 @@ const detailSections = [
     id: 'pulses-legumes',
     subtitle: 'PULSES & LEGUMES',
     title: 'Pulses & Legumes',
+    summary: 'Protein-rich pulses and legumes sourced by grade, quality, packaging and buyer requirements.',
     image: '/images/Pulses & Legumes/pulses and legumes.png',
     categoryImages: [
       { name: 'Toor Dal', src: '/images/Pulses & Legumes/toor dal.png' },
@@ -102,6 +43,7 @@ const detailSections = [
     id: 'fresh-produce',
     subtitle: 'FRESH PRODUCE',
     title: 'Bananas & Fresh Produce',
+    summary: 'Fresh produce programs planned around variety, grade, maturity, packaging and destination needs.',
     image: '/images/bananas-fresh-produce.jpeg',
     description: 'ZA GLOBAL EXPORTS provides farm-fresh fruits for you to enjoy their original taste. Our team constantly researches better ways to store and deliver fresh fruits to ensure customer satisfaction, and we offer a wide variety of high-demand fruits at affordable prices. Fresh produce enquiries are handled around clear buyer requirements so sourcing and shipment planning can be discussed accurately.',
     groups: [
@@ -119,6 +61,7 @@ const detailSections = [
     id: 'spices',
     subtitle: 'SPICES',
     title: 'Spices',
+    summary: 'Indian spices available for foodservice, retail, wholesale and food manufacturing needs.',
     image: '/images/spices.webp',
     categoryImages: [
       { name: 'Turmeric', src: '/images/spices/Turmeric.jpeg' },
@@ -140,42 +83,38 @@ const detailSections = [
       },
     ],
   },
-  {
-    id: 'edible-oils',
-    subtitle: 'EDIBLE OILS',
-    title: 'Premium Refined Edible Oils for Global Markets',
-    image: '/images/palm-oil.webp',
-    categoryImages: [
-      { name: 'Sunflower Oil', src: '/images/Edible Oils/sunflower oil.png' },
-      { name: 'Soybean Oil', src: '/images/Edible Oils/soyabean oil.png' },
-      { name: 'Palm Oil', src: '/images/Edible Oils/palm oil.png' },
-      { name: 'Corn Oil', src: '/images/Edible Oils/corn oil.png' },
-      { name: 'Coconut Oil', src: '/images/Edible Oils/coconut oil.png' },
-    ],
-    description: 'ZA GLOBAL EXPORTS is a leading refined edible oil exporter to GCC countries, supplying premium (Refined, Bleached, Deodorized) cooking oils to catering companies, retailers and other wholesalers worldwide. We ensure the highest quality sunflower oil, soybean oil, palm oil, corn oil and coconut oil, meeting international food safety standards.',
-    groups: [
-      {
-        heading: 'Suitable For',
-        items: ['Catering Companies', 'Retailers', 'Wholesalers', 'Food Manufacturers'],
-      },
-    ],
-  },
-  {
-    id: 'other-food-products',
-    subtitle: 'OTHER FOOD PRODUCTS',
-    title: 'Other Food Products',
-    image: '/images/other-products.webp',
-    description: 'Additional Indian food product enquiries can be reviewed case by case based on availability, buyer requirements and logistics feasibility.',
-    groups: [
-      {
-        heading: 'Possible Enquiries',
-        items: ['Grains', 'Flour', 'Oilseeds', 'Other pulses', 'Processed food products', 'Agricultural products', 'Other food commodities'],
-      },
-    ],
-  },
 ];
 
+function getProductIdFromHash(hash) {
+  const productId = hash.replace('#', '');
+  return detailSections.some((section) => section.id === productId) ? productId : '';
+}
+
 function ProductsPage() {
+  const { hash } = useLocation();
+  const [selectedProductId, setSelectedProductId] = useState(() => getProductIdFromHash(hash));
+  const selectedSection = detailSections.find((section) => section.id === selectedProductId);
+
+  useEffect(() => {
+    const productId = getProductIdFromHash(hash);
+
+    if (!productId) {
+      return;
+    }
+
+    setSelectedProductId(productId);
+    window.requestAnimationFrame(() => {
+      document.getElementById(`${productId}-details`)?.scrollIntoView({ block: 'start' });
+    });
+  }, [hash]);
+
+  const handleViewProduct = (productId) => {
+    setSelectedProductId(productId);
+    window.requestAnimationFrame(() => {
+      document.getElementById(`${productId}-details`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  };
+
   return (
     <>
       {/* Page Header */}
@@ -186,81 +125,87 @@ function ProductsPage() {
         </div>
       </section>
 
-      {/* Products Grid */}
       <section className="products section-padding bg-light">
         <div className="container">
-          <div className="products-grid">
-            {productsList.map((product, index) => (
-              <div className="product-card" key={index}>
+          <div className="section-header text-center">
+            <span className="section-subtitle">PRODUCT CATEGORIES</span>
+            <h2>Select a Product Category</h2>
+            <p>Review our core product categories and open each one to see available varieties and sourcing details.</p>
+          </div>
+          <div className="products-grid product-selection-grid">
+            {detailSections.map((section) => (
+              <article className="product-card" id={section.id} key={section.id}>
                 <div className="product-img">
-                  <img src={product.image} alt={product.title} />
+                  <img src={section.cardImage || section.image} alt={section.title} />
                 </div>
                 <div className="product-content">
-                  <h3>{product.title}</h3>
-                  <p>{product.description}</p>
-                  <Link to="/contact" className="btn btn-primary btn-sm">
-                    <i className="fa-solid fa-envelope"></i> {product.action}
-                  </Link>
+                  <span className="section-subtitle">{section.subtitle}</span>
+                  <h3>{section.title}</h3>
+                  <p>{section.summary}</p>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-sm product-action"
+                    aria-expanded={selectedProductId === section.id}
+                    aria-controls={`${section.id}-details`}
+                    onClick={() => handleViewProduct(section.id)}
+                  >
+                    <i className="fa-solid fa-eye"></i> View Product
+                  </button>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding product-details">
-        <div className="container">
-          <div className="section-header text-center">
-            <span className="section-subtitle">PRODUCT DETAILS</span>
-            <h2>Sourced According to Buyer Requirements</h2>
-            <p>Share your product, packing, quantity, shipment and destination requirements so the right options can be discussed.</p>
-          </div>
-          <div className="product-detail-grid">
-            {detailSections.map((section) => (
-              <article className="info-card product-detail-card" id={section.id} key={section.id}>
-                <span className="section-subtitle">{section.subtitle}</span>
-                <div className="product-detail-img">
-                  <img src={section.image} alt={section.title} />
-                </div>
-                <h3>{section.title}</h3>
-                <p>{section.description}</p>
-                {section.categoryImages && (
-                  <div className="category-images-gallery">
-                    <h4>{section.id === 'rice' ? 'Rice Varieties' : section.id === 'pulses-legumes' ? 'Pulse Types' : section.id === 'spices' ? 'Spice Varieties' : 'Oil Types'}</h4>
-                    <div className="category-images-grid">
-                      {section.categoryImages.map((catImg, idx) => (
-                        <div className="category-image-item" key={idx}>
-                          <img
-                            src={catImg.src}
-                            alt={catImg.name}
-                            loading="lazy"
-                          />
-                          <span className="category-image-label">{catImg.name}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                <div className="detail-groups {section.groups.length === 1 ? 'single-group' : ''}">
-                  {section.groups.map((group) => (
-                    <div className="detail-group" key={group.heading}>
-                      <h4>{group.heading}</h4>
-                      <ul className="check-list {group.heading === 'Suitable For' ? 'two-column' : ''}">
-                        {group.items.map((item) => (
-                          <li key={item}><i className="fa-solid fa-check"></i>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-                <Link to="/contact" className="btn btn-primary btn-sm">
-                  <i className="fa-solid fa-envelope"></i> Contact Now
-                </Link>
               </article>
             ))}
           </div>
         </div>
       </section>
+
+      {selectedSection && (
+        <section className="section-padding product-details" id={`${selectedSection.id}-details`}>
+          <div className="container">
+            <article className="info-card product-detail-card selected-product-detail">
+              <span className="section-subtitle">{selectedSection.subtitle}</span>
+              <div className="product-detail-img">
+                <img src={selectedSection.image} alt={selectedSection.title} />
+              </div>
+              <h3>{selectedSection.title}</h3>
+              <p>{selectedSection.description}</p>
+              {selectedSection.categoryImages && (
+                <div className="category-images-gallery">
+                  <h4>{selectedSection.id === 'rice' ? 'Rice Varieties' : selectedSection.id === 'pulses-legumes' ? 'Pulse Types' : 'Spice Varieties'}</h4>
+                  <div className="category-images-grid">
+                    {selectedSection.categoryImages.map((catImg) => (
+                      <div className="category-image-item" key={catImg.name}>
+                        <img
+                          src={catImg.src}
+                          alt={catImg.name}
+                          loading="lazy"
+                        />
+                        <span className="category-image-label">{catImg.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              <div className={selectedSection.groups.length === 1 ? 'detail-groups single-group' : 'detail-groups'}>
+                {selectedSection.groups.map((group) => (
+                  <div className="detail-group" key={group.heading}>
+                    <h4>{group.heading}</h4>
+                    <ul className={group.heading === 'Suitable For' ? 'check-list two-column' : 'check-list'}>
+                      {group.items.map((item) => (
+                        <li key={item}><i className="fa-solid fa-check"></i>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+              <div className="selected-product-actions">
+                <Link to="/contact" className="btn btn-primary btn-sm">
+                  <i className="fa-solid fa-envelope"></i> Contact Now
+                </Link>
+              </div>
+            </article>
+          </div>
+        </section>
+      )}
 
       {/* Simple CTA Section */}
       <section className="simple-cta">

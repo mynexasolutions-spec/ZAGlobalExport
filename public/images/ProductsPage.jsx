@@ -1,73 +1,11 @@
 import { Link } from 'react-router-dom';
 
-const productsList = [
-  {
-    image: '/images/rice.jpeg',
-    title: 'Rice',
-    description: 'Indian rice varieties suitable for retail, wholesale, catering, foodservice and institutional applications.',
-    action: 'Request Rice Specifications',
-  },
-  {
-    image: '/images/basmati-rice.webp',
-    title: 'Basmati Rice',
-    description: 'Basmati rice supply can be explored based on required grade, grain characteristics, packing and quantity.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/non-basmati-rice.webp',
-    title: 'Non-Basmati Rice',
-    description: 'Non-basmati rice options can be sourced according to customer specifications and market requirements.',
-    action: 'Send Requirement',
-  },
-  {
-    image: '/images/sella-rice.webp',
-    title: 'Sella Rice',
-    description: 'Sella (parboiled) rice can be sourced according to required grade, grain characteristics, packing and quantity.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/grains.jpeg',
-    title: 'Pulses & Legumes',
-    description: 'Toor dal, moong dal, masoor dal, chana dal, chickpeas and other pulses can be sourced by grade and packing need.',
-    action: 'Request Pulses Catalogue',
-  },
-  {
-    image: '/images/bananas-fresh-produce.jpeg',
-    title: 'Bananas & Fresh Produce',
-    description: 'Fresh produce programs can be discussed based on variety, size, grade, maturity, packaging, volume and destination.',
-    action: 'Enquire About Fresh Produce',
-  },
-  {
-    image: '/images/spices.webp',
-    title: 'Spices',
-    description: 'Indian spices can be explored subject to product availability, specifications, packing and commercial requirements.',
-    action: 'Discuss Requirements',
-  },
-  {
-    image: '/images/palm-oil.webp',
-    title: 'Edible Oil',
-    description: 'Premium-quality edible oils, refined and processed to meet international food safety and quality standards.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/sunflower-oil.webp',
-    title: 'Sunflower Oil',
-    description: 'Premium refined sunflower oil can be supplied to catering companies, retailers and wholesalers worldwide.',
-    action: 'Request Specifications',
-  },
-  {
-    image: '/images/other-products.webp',
-    title: 'Other Food Products',
-    description: 'Flour, oilseeds, processed food products and other food commodities can be reviewed based on your requirement.',
-    action: 'Send Your Requirement',
-  },
-];
-
 const detailSections = [
   {
     id: 'rice',
     subtitle: 'RICE',
     title: 'Rice',
+    cardImage: '/images/rice/rice.png',
     image: '/images/rice/golden basmati rice.png',
     categoryImages: [
       { name: 'White Basmati Rice', src: '/images/rice/white basmati rice.png' },
@@ -144,13 +82,13 @@ const detailSections = [
     id: 'edible-oils',
     subtitle: 'EDIBLE OILS',
     title: 'Premium Refined Edible Oils for Global Markets',
-    image: '/images/palm-oil.webp',
+    image: '/images/edible oils.png',
     categoryImages: [
-      { name: 'Sunflower Oil', src: '/images/Edible Oils/sunflower oil.png' },
-      { name: 'Soybean Oil', src: '/images/Edible Oils/soyabean oil.png' },
-      { name: 'Palm Oil', src: '/images/Edible Oils/palm oil.png' },
-      { name: 'Corn Oil', src: '/images/Edible Oils/corn oil.png' },
-      { name: 'Coconut Oil', src: '/images/Edible Oils/coconut oil.png' },
+      { name: 'Sunflower Oil', src: '/images/Edible-Oils/sunflower oil.png' },
+      { name: 'Soybean Oil', src: '/images/Edible-Oils/soyabean oil.png' },
+      { name: 'Palm Oil', src: '/images/Edible-Oils/palm-oil.png' },
+      { name: 'Corn Oil', src: '/images/Edible-Oils/corn oil.png' },
+      { name: 'Coconut Oil', src: '/images/Edible-Oils/coconut oil.png' },
     ],
     description: 'ZA GLOBAL EXPORTS is a leading refined edible oil exporter to GCC countries, supplying premium (Refined, Bleached, Deodorized) cooking oils to catering companies, retailers and other wholesalers worldwide. We ensure the highest quality sunflower oil, soybean oil, palm oil, corn oil and coconut oil, meeting international food safety standards.',
     groups: [
@@ -183,28 +121,6 @@ function ProductsPage() {
         <div className="container">
           <h1>Our Products</h1>
           <p>Quality Indian food products sourced for professional buyers.</p>
-        </div>
-      </section>
-
-      {/* Products Grid */}
-      <section className="products section-padding bg-light">
-        <div className="container">
-          <div className="products-grid">
-            {productsList.map((product, index) => (
-              <div className="product-card" key={index}>
-                <div className="product-img">
-                  <img src={product.image} alt={product.title} />
-                </div>
-                <div className="product-content">
-                  <h3>{product.title}</h3>
-                  <p>{product.description}</p>
-                  <Link to="/contact" className="btn btn-primary btn-sm">
-                    <i className="fa-solid fa-envelope"></i> {product.action}
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

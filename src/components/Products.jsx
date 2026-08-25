@@ -1,49 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const products = [
-  {
-    image: '/images/rice.jpeg',
-    title: 'Rice',
-    description: 'Indian rice varieties suitable for retail, wholesale, catering, foodservice and institutional applications.',
-    action: 'View Rice Products',
-    to: '/products#rice',
-  },
-  {
-    image: '/images/grains.jpeg',
-    title: 'Pulses & Legumes',
-    description: 'Quality pulses and legumes sourced according to customer specifications and market requirements.',
-    action: 'View Pulses',
-    to: '/products#pulses-legumes',
-  },
-  {
-    image: '/images/bananas-fresh-produce.jpeg',
-    title: 'Bananas & Fresh Produce',
-    description: 'Fresh agricultural products sourced through suitable supply partners for export markets.',
-    action: 'View Fresh Produce',
-    to: '/products#fresh-produce',
-  },
-  {
-    image: '/images/spices.webp',
-    title: 'Spices',
-    description: 'Premium organic Indian spices sourced for authentic taste, aroma and consistent quality.',
-    action: 'View Spices',
-    to: '/products#spices',
-  },
-  {
-    image: '/images/Edible Oils/palm oil.png',
-    title: 'Edible Oils',
-    description: 'Premium refined edible oils, including palm and sunflower oil, supplied to international food safety standards.',
-    action: 'View Edible Oils',
-    to: '/products#edible-oils',
-  },
-  {
-    image: '/images/other-products.webp',
-    title: 'Other Food Products',
-    description: 'Grains, flour, oilseeds and other food commodities can be explored based on buyer requirements.',
-    action: 'View All Products',
-    to: '/products#other-food-products',
-  },
-];
+const products = [];
 
 function Products() {
   return (

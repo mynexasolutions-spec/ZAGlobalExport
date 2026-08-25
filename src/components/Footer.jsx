@@ -44,8 +44,6 @@ function Footer() {
               <li><Link to="/products#pulses-legumes">Pulses &amp; Legumes</Link></li>
               <li><Link to="/products#fresh-produce">Bananas &amp; Fresh Produce</Link></li>
               <li><Link to="/products#spices">Spices</Link></li>
-              <li><Link to="/products#edible-oils">Edible Oils</Link></li>
-              <li><Link to="/products#other-food-products">Other Food Products</Link></li>
             </ul>
           </div>
           <div className="footer-col contact-col">
