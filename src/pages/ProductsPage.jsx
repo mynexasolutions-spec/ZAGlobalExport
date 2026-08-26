@@ -1,156 +1,50 @@
-import { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-
-const detailSections = [
-  {
-    id: 'rice',
-    subtitle: 'RICE',
-    title: 'Rice',
-    summary: 'Indian rice varieties for retail, wholesale, catering, foodservice and institutional buyers.',
-    cardImage: '/images/rice/rice.png',
-    image: '/images/rice/golden basmati rice.png',
-    categoryImages: [
-      { name: 'White Basmati Rice', src: '/images/rice/white basmati rice.png' },
-      { name: 'Non-Basmati Rice', src: '/images/rice/non basmati rice.png' },
-      { name: 'Parboiled Rice Basmati', src: '/images/rice/Parboiled Rice Basmati.png' },
-      { name: 'Golden Parboiled Basmati Rice', src: '/images/rice/Golden Parboiled Basmati Rice.png' },
-    ],
-    description: "ZA GLOBAL EXPORTS offers rice with authentic flavors and exceptional taste. Over time, people worldwide have developed a fondness for rice, enjoying it in various forms and flavors — some prefer basmati, while others opt for non-basmati varieties. India, known for its abundant production of organic rice, stands as one of the leading rice exporters globally, and the organic rice supplied by ZA GLOBAL EXPORTS is renowned for its genuine flavors and high quality. Our rice varieties have been widely appreciated in Middle Eastern countries for their taste and quality. ZA GLOBAL EXPORTS sources rice from highly modern mills and can supply according to customer specifications, including variety, grade, grain characteristics, packaging and quantity.",
-    groups: [
-      {
-        heading: 'Suitable For',
-        items: ['Catering Companies', 'Foodservice Operators', 'Restaurants', 'Wholesalers', 'Food Distributors', 'Retailers', 'Institutional Buyers'],
-      },
-    ],
-  },
-  {
-    id: 'pulses-legumes',
-    subtitle: 'PULSES & LEGUMES',
-    title: 'Pulses & Legumes',
-    summary: 'Protein-rich pulses and legumes sourced by grade, quality, packaging and buyer requirements.',
-    image: '/images/Pulses & Legumes/pulses and legumes.png',
-    categoryImages: [
-      { name: 'Toor Dal', src: '/images/Pulses & Legumes/toor dal.png' },
-      { name: 'Moong Dal', src: '/images/Pulses & Legumes/moong dal.png' },
-      { name: 'Masoor Dal', src: '/images/Pulses & Legumes/masoor dal.jpeg' },
-      { name: 'Chana Dal', src: '/images/Pulses & Legumes/chana dal.png' },
-      { name: 'Chickpeas', src: '/images/Pulses & Legumes/chickpeas.jpeg' },
-    ],
-    description: 'Nutritious. Essential. Reliably Sourced. ZA GLOBAL EXPORTS offers a rich source of protein to enhance your diet with a diverse range of pulses, supplying a variety of pulses to meet the growing demands of customers worldwide. Originating from India, a rapidly developing nation with an abundance of high-quality agricultural products, our pulses — a staple in Middle Eastern diets — are renowned for their rich protein content. We carefully select our farmers to ensure the best sources for our pulses, using the latest techniques to maintain their nutritional value, and each batch undergoes rigorous screening, including cleaning and grading, before reaching you.',
-    groups: [],
-  },
-  {
-    id: 'fresh-produce',
-    subtitle: 'FRESH PRODUCE',
-    title: 'Bananas & Fresh Produce',
-    summary: 'Fresh produce programs planned around variety, grade, maturity, packaging and destination needs.',
-    image: '/images/bananas-fresh-produce.jpeg',
-    description: 'ZA GLOBAL EXPORTS provides farm-fresh fruits for you to enjoy their original taste. Our team constantly researches better ways to store and deliver fresh fruits to ensure customer satisfaction, and we offer a wide variety of high-demand fruits at affordable prices. Fresh produce enquiries are handled around clear buyer requirements so sourcing and shipment planning can be discussed accurately.',
-    groups: [
-      {
-        heading: 'Requirements To Share',
-        items: ['Variety', 'Size and grade', 'Quality', 'Maturity', 'Packaging', 'Quantity', 'Shipment schedule', 'Destination requirements'],
-      },
-      {
-        heading: 'BANANAS',
-        items: ['We can explore banana supply programs based on customer specifications, required volume, packaging and destination.'],
-      },
-    ],
-  },
-  {
-    id: 'spices',
-    subtitle: 'SPICES',
-    title: 'Spices',
-    summary: 'Indian spices available for foodservice, retail, wholesale and food manufacturing needs.',
-    image: '/images/spices.webp',
-    categoryImages: [
-      { name: 'Turmeric', src: '/images/spices/Turmeric.jpeg' },
-      { name: 'Chili Powder', src: '/images/spices/Chili Powder.jpeg' },
-      { name: 'Cumin', src: '/images/spices/cumin.jpeg' },
-      { name: 'Coriander', src: '/images/spices/coriander.png' },
-      { name: 'Cardamom', src: '/images/spices/Cardamom.jpeg' },
-      { name: 'Black Pepper', src: '/images/spices/Black Pepper.jpeg' },
-      { name: 'Star Anise', src: '/images/spices/Star Anise.jpeg' },
-      { name: 'Cloves', src: '/images/spices/cloves.png' },
-      { name: 'Fennel', src: '/images/spices/fennel.png' },
-      { name: 'Mustard Seeds', src: '/images/spices/mustard seeds.png' },
-    ],
-    description: 'Immerse yourself in the enchanting fragrance of superb quality spices from ZA GLOBAL EXPORTS. Renowned for delivering top-notch organic Indian spices to Middle Eastern countries, we ensure that the taste and aroma these spices bring to your food provide an unparalleled experience. Our loyal customers return time and again for our exceptional range of spices, finding ultimate satisfaction in the delicious flavors they create. We uphold the highest quality standards in delivering organic Indian spices to our customers.',
-    groups: [
-      {
-        heading: 'Suitable For',
-        items: ['Catering Companies', 'Foodservice Operators', 'Retailers', 'Food Manufacturers', 'Wholesalers'],
-      },
-    ],
-  },
-];
-
-function getProductIdFromHash(hash) {
-  const productId = hash.replace('#', '');
-  return detailSections.some((section) => section.id === productId) ? productId : '';
-}
+import { Link } from 'react-router-dom';
+import { products } from '../data/products';
 
 function ProductsPage() {
-  const { hash } = useLocation();
-  const [selectedProductId, setSelectedProductId] = useState(() => getProductIdFromHash(hash));
-  const selectedSection = detailSections.find((section) => section.id === selectedProductId);
-
-  useEffect(() => {
-    const productId = getProductIdFromHash(hash);
-
-    if (!productId) {
-      return;
-    }
-
-    setSelectedProductId(productId);
-    window.requestAnimationFrame(() => {
-      document.getElementById(`${productId}-details`)?.scrollIntoView({ block: 'start' });
-    });
-  }, [hash]);
-
-  const handleViewProduct = (productId) => {
-    setSelectedProductId(productId);
-    window.requestAnimationFrame(() => {
-      document.getElementById(`${productId}-details`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  };
-
   return (
     <>
       {/* Page Header */}
       <section className="page-header">
         <div className="container">
+          <nav className="breadcrumbs" aria-label="Breadcrumb">
+            <Link to="/">Home</Link>
+            <span className="breadcrumb-sep"><i className="fa-solid fa-chevron-right"></i></span>
+            <span className="breadcrumb-current">Products</span>
+          </nav>
           <h1>Our Products</h1>
-          <p>Quality Indian food products sourced for professional buyers.</p>
+          <p>Quality Indian food commodities and agricultural products sourced for global professional buyers.</p>
         </div>
       </section>
 
+      {/* Product Categories Selection Grid */}
       <section className="products section-padding bg-light">
         <div className="container">
           <div className="section-header text-center">
             <span className="section-subtitle">PRODUCT CATEGORIES</span>
             <h2>Select a Product Category</h2>
-            <p>Review our core product categories and open each one to see available varieties and sourcing details.</p>
+            <p>Explore our export portfolio. Click on any category to view detailed specifications, available varieties, packaging options, and sourcing standards.</p>
           </div>
           <div className="products-grid product-selection-grid">
-            {detailSections.map((section) => (
-              <article className="product-card" id={section.id} key={section.id}>
+            {products.map((product) => (
+              <article className="product-card" id={product.id} key={product.id}>
                 <div className="product-img">
-                  <img src={section.cardImage || section.image} alt={section.title} />
+                  <img src={product.cardImage || product.mainImage} alt={product.title} loading="lazy" />
+                  <span className="product-card-badge">Export Sourced</span>
                 </div>
                 <div className="product-content">
-                  <span className="section-subtitle">{section.subtitle}</span>
-                  <h3>{section.title}</h3>
-                  <p>{section.summary}</p>
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-sm product-action"
-                    aria-expanded={selectedProductId === section.id}
-                    aria-controls={`${section.id}-details`}
-                    onClick={() => handleViewProduct(section.id)}
-                  >
-                    <i className="fa-solid fa-eye"></i> View Product
-                  </button>
+                  <span className="section-subtitle">{product.subtitle}</span>
+                  <h3>{product.title}</h3>
+                  <p>{product.summary}</p>
+                  <div className="product-card-footer">
+                    <Link
+                      to={`/products/${product.id}`}
+                      className="btn btn-primary btn-sm product-action"
+                      aria-label={`View details for ${product.title}`}
+                    >
+                      <i className="fa-solid fa-eye"></i> View Product
+                    </Link>
+                  </div>
                 </div>
               </article>
             ))}
@@ -158,54 +52,39 @@ function ProductsPage() {
         </div>
       </section>
 
-      {selectedSection && (
-        <section className="section-padding product-details" id={`${selectedSection.id}-details`}>
-          <div className="container">
-            <article className="info-card product-detail-card selected-product-detail">
-              <span className="section-subtitle">{selectedSection.subtitle}</span>
-              <div className="product-detail-img">
-                <img src={selectedSection.image} alt={selectedSection.title} />
-              </div>
-              <h3>{selectedSection.title}</h3>
-              <p>{selectedSection.description}</p>
-              {selectedSection.categoryImages && (
-                <div className="category-images-gallery">
-                  <h4>{selectedSection.id === 'rice' ? 'Rice Varieties' : selectedSection.id === 'pulses-legumes' ? 'Pulse Types' : 'Spice Varieties'}</h4>
-                  <div className="category-images-grid">
-                    {selectedSection.categoryImages.map((catImg) => (
-                      <div className="category-image-item" key={catImg.name}>
-                        <img
-                          src={catImg.src}
-                          alt={catImg.name}
-                          loading="lazy"
-                        />
-                        <span className="category-image-label">{catImg.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              <div className={selectedSection.groups.length === 1 ? 'detail-groups single-group' : 'detail-groups'}>
-                {selectedSection.groups.map((group) => (
-                  <div className="detail-group" key={group.heading}>
-                    <h4>{group.heading}</h4>
-                    <ul className={group.heading === 'Suitable For' ? 'check-list two-column' : 'check-list'}>
-                      {group.items.map((item) => (
-                        <li key={item}><i className="fa-solid fa-check"></i>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
-              <div className="selected-product-actions">
-                <Link to="/contact" className="btn btn-primary btn-sm">
-                  <i className="fa-solid fa-envelope"></i> Contact Now
-                </Link>
-              </div>
-            </article>
+      {/* Sourcing Process Overview */}
+      <section className="section-padding products-trust-section">
+        <div className="container">
+          <div className="section-header text-center">
+            <span className="section-subtitle">EXPORT EXCELLENCE</span>
+            <h2>How We Fulfill Buyer Requirements</h2>
+            <p>Direct sourcing, lab testing, custom packing, and seamless multi-country containerized shipping.</p>
           </div>
-        </section>
-      )}
+          <div className="card-grid-3">
+            <div className="info-card">
+              <div className="icon-box gold-accent" style={{ fontSize: '2rem', marginBottom: '16px' }}>
+                <i className="fa-solid fa-seedling"></i>
+              </div>
+              <h3>Direct Farm &amp; Mill Sourcing</h3>
+              <p>We source directly from accredited mills, modern processing facilities, and certified farmers across India to ensure genuine origin and optimal pricing.</p>
+            </div>
+            <div className="info-card">
+              <div className="icon-box gold-accent" style={{ fontSize: '2rem', marginBottom: '16px' }}>
+                <i className="fa-solid fa-flask-vial"></i>
+              </div>
+              <h3>Rigorous Quality Checks</h3>
+              <p>Every shipment is verified for sortex purity, grain elongation, moisture limits, and international phytosanitary compliance before container dispatch.</p>
+            </div>
+            <div className="info-card">
+              <div className="icon-box gold-accent" style={{ fontSize: '2rem', marginBottom: '16px' }}>
+                <i className="fa-solid fa-boxes-packing"></i>
+              </div>
+              <h3>Custom Packing &amp; Private Label</h3>
+              <p>From consumer pouches (1kg–5kg) to industrial bulk bags (25kg–50kg) and flexitanks, we deliver tailored packaging branded to your market requirements.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Simple CTA Section */}
       <section className="simple-cta">

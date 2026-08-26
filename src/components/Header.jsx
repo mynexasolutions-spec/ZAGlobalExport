@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const productLinks = [
-  { to: '/products#rice', label: 'Rice' },
-  { to: '/products#pulses-legumes', label: 'Pulses & Legumes' },
-  { to: '/products#fresh-produce', label: 'Bananas & Fresh Produce' },
-  { to: '/products#spices', label: 'Spices' },
+  { to: '/products/rice', label: 'Rice' },
+  { to: '/products/pulses-legumes', label: 'Pulses & Legumes' },
+  { to: '/products/fresh-produce', label: 'Bananas & Fresh Produce' },
+  { to: '/products/spices', label: 'Spices' },
+  { to: '/products/edible-oils', label: 'Edible Oils' },
 ];
 
 function Header() {

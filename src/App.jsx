@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import ProductsPage from './pages/ProductsPage';
+import ProductDetailPage from './pages/ProductDetailPage';
 import QualityFoodSafety from './pages/QualityFoodSafety';
 import Markets from './pages/Markets';
 import ExportLogistics from './pages/ExportLogistics';
@@ -21,6 +22,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:productId" element={<ProductDetailPage />} />
           <Route path="/quality-food-safety" element={<QualityFoodSafety />} />
           <Route path="/markets" element={<Markets />} />
           <Route path="/export-logistics" element={<ExportLogistics />} />

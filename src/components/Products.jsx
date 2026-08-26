@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-
-const products = [];
+import { products } from '../data/products';
 
 function Products() {
   return (
@@ -9,23 +8,32 @@ function Products() {
         <div className="section-header text-center">
           <span className="section-subtitle">OUR PRODUCTS</span>
           <h2>Quality Products. Reliable Sourcing.</h2>
-          <p>Our initial portfolio focuses on essential food commodities and agricultural products sourced from India.</p>
+          <p>Our export portfolio focuses on essential food commodities and agricultural products sourced directly from certified Indian mills and growers.</p>
         </div>
         <div className="products-grid">
-          {products.map((product, index) => (
-            <div className="product-card" key={index}>
+          {products.map((product) => (
+            <article className="product-card" key={product.id}>
               <div className="product-img">
-                <img src={product.image} alt={product.title} />
+                <img src={product.cardImage || product.mainImage} alt={product.title} loading="lazy" />
+                <span className="product-card-badge">Export Sourced</span>
               </div>
               <div className="product-content">
+                <span className="section-subtitle">{product.subtitle}</span>
                 <h3>{product.title}</h3>
-                <p>{product.description}</p>
-                <Link to={product.to} className="btn btn-primary btn-sm">
-                    <i className="fa-solid fa-arrow-right"></i> {product.action}
-                </Link>
+                <p>{product.summary}</p>
+                <div className="product-card-footer">
+                  <Link to={`/products/${product.id}`} className="btn btn-primary btn-sm">
+                    <i className="fa-solid fa-arrow-right"></i> View Product
+                  </Link>
+                </div>
               </div>
-            </div>
+            </article>
           ))}
+        </div>
+        <div className="text-center" style={{ marginTop: '40px' }}>
+          <Link to="/products" className="btn btn-secondary">
+            <i className="fa-solid fa-table-cells"></i> View All Product Categories
+          </Link>
         </div>
       </div>
     </section>
