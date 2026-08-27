@@ -6,6 +6,8 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminOverview from './pages/admin/AdminOverview';
 import AdminProducts from './pages/admin/AdminProducts';
 import AdminQueries from './pages/admin/AdminQueries';
+import AdminHomepage from './pages/admin/AdminHomepage';
+
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -55,6 +57,7 @@ function AppContent() {
             <Route index element={<AdminOverview />} />
             <Route path="products" element={<AdminProducts />} />
             <Route path="queries" element={<AdminQueries />} />
+            <Route path="homepage" element={<AdminHomepage />} />
           </Route>
         </Routes>
       </main>

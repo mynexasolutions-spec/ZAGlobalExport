@@ -4302,3 +4302,117 @@ img {
     .query-reply-actions .btn { text-align: center; justify-content: center; }
     .admin-page-header { flex-direction: column; }
 }
+
+/* ==============================================================================
+   ADMIN HOMEPAGE SECTIONS MANAGER STYLES
+   ============================================================================== */
+
+.admin-homepage-tabs {
+    display: flex;
+    gap: 8px;
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+}
+
+.admin-homepage-form {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    padding: 30px;
+}
+
+.promise-admin-row {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #fcfdfa;
+    transition: var(--transition);
+}
+
+.promise-admin-icon {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    background: #eef3ef;
+    padding: 12px;
+    border-radius: 50%;
+    min-width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.point-admin-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.partners-admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+
+.partner-admin-card {
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    position: relative;
+    background: #fafbfc;
+}
+
+.partner-logo-preview {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.partner-delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    color: #dc2626;
+    font-size: 1rem;
+    padding: 4px;
+    transition: var(--transition);
+}
+.partner-delete-btn:hover {
+    color: #b91c1c;
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .admin-homepage-form {
+        padding: 20px 15px;
+    }
+    .promise-admin-row {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: left;
+    }
+    .promise-admin-icon {
+        align-self: center;
+    }
+    .admin-homepage-tabs {
+        justify-content: center;
+    }
+    .admin-homepage-tabs .btn {
+        flex-grow: 1;
+        text-align: center;
+        justify-content: center;
+    }
+}
+

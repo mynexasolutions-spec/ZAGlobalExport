@@ -19,6 +19,7 @@ function AdminLayout() {
     const path = location.pathname;
     if (path.includes('/admin/products')) return 'Product Management';
     if (path.includes('/admin/queries'))  return 'Buyer Queries & Inquiries';
+    if (path.includes('/admin/homepage')) return 'Homepage Management';
     return 'Dashboard Overview';
   };
 
@@ -80,6 +81,16 @@ function AdminLayout() {
               >
                 <i className="fa-solid fa-envelope-open-text nav-item-icon"></i>
                 <span>Queries</span>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/admin/homepage"
+                onClick={closeSidebar}
+                className={({ isActive }) => `admin-nav-item ${isActive ? 'active' : ''}`}
+              >
+                <i className="fa-solid fa-house nav-item-icon"></i>
+                <span>Homepage</span>
               </NavLink>
             </li>
           </ul>

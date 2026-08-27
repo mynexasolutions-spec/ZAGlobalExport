@@ -122,3 +122,75 @@ CREATE POLICY "Authenticated users full access queries"
     TO authenticated
     USING (true)
     WITH CHECK (true);
+
+-- ==============================================================================
+-- 4. HOMEPAGE SETTINGS TABLE
+-- ==============================================================================
+
+CREATE TABLE IF NOT EXISTS public.homepage_settings (
+    id INTEGER PRIMARY KEY DEFAULT 1,
+    hero_badge TEXT DEFAULT 'ZA GLOBAL EXPORTS',
+    hero_title TEXT DEFAULT 'From Indian farms to the global market',
+    hero_description TEXT DEFAULT 'Reliable food supply for professional buyers. We connect Indian food products with distributors, catering companies, foodservice operators, wholesalers and institutional customers across global markets.',
+    hero_bg_image TEXT DEFAULT '/banner-image.png',
+    hero_primary_btn_text TEXT DEFAULT 'View Products',
+    hero_primary_btn_link TEXT DEFAULT '/products',
+    hero_secondary_btn_text TEXT DEFAULT 'Request a Quote',
+    hero_secondary_btn_link TEXT DEFAULT '/contact',
+
+    promise_subtitle TEXT DEFAULT 'OUR PROMISE',
+    promise_title TEXT DEFAULT 'Clear Communication. Reliable Coordination. Professional Service.',
+    promise_description TEXT DEFAULT 'We help professional food buyers source from India with practical information, coordinated export steps and service that respects commercial timelines.',
+    promise_cards JSONB DEFAULT '[
+      {"icon": "fa-comments", "title": "Clear Communication", "description": "Straightforward updates on product availability, specifications, timelines and documentation from enquiry to shipment."},
+      {"icon": "fa-ship", "title": "Reliable Coordination", "description": "Structured follow-through across sourcing, packing, inspection readiness and export movement for food buyers."},
+      {"icon": "fa-handshake", "title": "Professional Service", "description": "Buyer-focused support for distributors, wholesalers, caterers and foodservice teams sourcing Indian products."}
+    ]'::jsonb,
+
+    reach_subtitle TEXT DEFAULT 'GLOBAL REACH',
+    reach_title TEXT DEFAULT 'From India To<br /><span class="text-primary">The Global Food Market</span>',
+    reach_description TEXT DEFAULT 'ZA GLOBAL EXPORTS connects reliable Indian food sources with professional buyers across Saudi Arabia, the United Arab Emirates, Qatar, Kuwait, Oman, Bahrain and other international markets.',
+    reach_image TEXT DEFAULT '/global-reach.webp',
+    reach_badge_icon TEXT DEFAULT 'fa-solid fa-earth-asia',
+    reach_badge_text TEXT DEFAULT 'Global Supply',
+    reach_points JSONB DEFAULT '[
+      "India-based food sourcing network",
+      "Focusing international buyers and their requirements",
+      "Export documentation and logistics support"
+    ]'::jsonb,
+
+    partners_subtitle TEXT DEFAULT 'OUR PARTNERS',
+    partners_title TEXT DEFAULT 'Trusted by Global Leaders',
+    partners_list JSONB DEFAULT '[
+      {"name": "MAERSK", "icon": "fa-brands fa-dhl", "color": "#d40511", "logo_url": null},
+      {"name": "msc", "icon": "fa-brands fa-fedex", "color": "#4d148c", "logo_url": null},
+      {"name": "CMA CGM", "icon": "fa-brands fa-ups", "color": "#ffb500", "logo_url": null},
+      {"name": "APL", "icon": "fa-brands fa-amazon", "color": "#ff9900", "logo_url": null},
+      {"name": "EVERGREEN", "icon": "fa-brands fa-ebay", "color": "#e53238", "logo_url": null},
+      {"name": "Hapag-Lloyd", "icon": "fa-brands fa-fedex", "color": "#ff6600", "logo_url": null}
+    ]'::jsonb,
+
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+    CONSTRAINT single_row CHECK (id = 1)
+);
+
+ALTER TABLE public.homepage_settings ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Anon full access homepage_settings" ON public.homepage_settings;
+DROP POLICY IF EXISTS "Authenticated users full access homepage_settings" ON public.homepage_settings;
+
+CREATE POLICY "Anon full access homepage_settings"
+    ON public.homepage_settings FOR ALL
+    TO anon
+    USING (true)
+    WITH CHECK (true);
+
+CREATE POLICY "Authenticated users full access homepage_settings"
+    ON public.homepage_settings FOR ALL
+    TO authenticated
+    USING (true)
+    WITH CHECK (true);
+
+INSERT INTO public.homepage_settings (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
+
