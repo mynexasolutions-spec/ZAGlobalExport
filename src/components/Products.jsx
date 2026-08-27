@@ -1,7 +1,25 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { getHomeProducts, refreshProductsFromSupabase } from '../services/productsService';
 
 function Products() {
+  // Instant render — only products marked visible on homepage, sorted by displayOrder
+  const [productsList, setProductsList] = useState(() => getHomeProducts());
+
+  useEffect(() => {
+    let mounted = true;
+    refreshProductsFromSupabase()
+      .then((fresh) => {
+        if (!mounted) return;
+        const visible = fresh
+          .filter((p) => p.showOnHome !== false)
+          .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0));
+        setProductsList(visible);
+      })
+      .catch(() => {});
+    return () => { mounted = false; };
+  }, []);
+
   return (
     <section className="products section-padding bg-light">
       <div className="container">
@@ -11,7 +29,7 @@ function Products() {
           <p>Our export portfolio focuses on essential food commodities and agricultural products sourced directly from certified Indian mills and growers.</p>
         </div>
         <div className="products-grid">
-          {products.map((product) => (
+          {productsList.map((product) => (
             <article className="product-card" key={product.id}>
               <div className="product-img">
                 <img src={product.cardImage || product.mainImage} alt={product.title} loading="lazy" />

@@ -1,23 +1,65 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { products, getProductById } from '../data/products';
+import { getProducts, getProductById, refreshProductsFromSupabase } from '../services/productsService';
 
 function ProductDetailPage() {
   const { productId } = useParams();
-  const product = getProductById(productId);
 
-  // Active preview image (defaults to mainImage or first category image)
+  // Instant load from cache — no spinner if product exists in cache
+  const [product, setProduct] = useState(() => getProductById(productId));
+  const [allProducts, setAllProducts] = useState(() => getProducts());
+  const [loading, setLoading] = useState(false);
+
+  // Active preview image
   const [activeImage, setActiveImage] = useState('');
   const [activeImageLabel, setActiveImageLabel] = useState('');
 
+  // Set initial image when product first loads from cache
   useEffect(() => {
-    if (product) {
-      const initialImg = product.mainImage || (product.categoryImages && product.categoryImages[0]?.src) || product.cardImage;
-      setActiveImage(initialImg);
+    if (product && !activeImage) {
+      const img = product.mainImage || product.categoryImages?.[0]?.src || product.cardImage;
+      setActiveImage(img);
       setActiveImageLabel(product.title);
-      window.scrollTo(0, 0);
     }
-  }, [productId, product]);
+  }, [product, activeImage]);
+
+  useEffect(() => {
+    let mounted = true;
+    window.scrollTo(0, 0);
+
+    // If not in cache, show loader and wait
+    const cached = getProductById(productId);
+    if (!cached) setLoading(true);
+
+    // Background refresh to get fresh data
+    refreshProductsFromSupabase()
+      .then((fresh) => {
+        if (!mounted) return;
+        const found = fresh?.find((p) => p.id.toLowerCase() === productId?.toLowerCase());
+        if (found) {
+          setProduct(found);
+          setAllProducts(fresh);
+          const img = found.mainImage || found.categoryImages?.[0]?.src || found.cardImage;
+          setActiveImage(img);
+          setActiveImageLabel(found.title);
+        }
+      })
+      .catch(() => {})
+      .finally(() => { if (mounted) setLoading(false); });
+
+    return () => { mounted = false; };
+  }, [productId]);
+
+  if (loading && !product) {
+    return (
+      <div className="section-padding text-center">
+        <div className="container">
+          <i className="fa-solid fa-circle-notch fa-spin" style={{ fontSize: '2.5rem', color: 'var(--primary-color)' }}></i>
+          <p style={{ marginTop: '16px', color: 'var(--text-muted)' }}>Loading product details...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -39,7 +81,7 @@ function ProductDetailPage() {
   }
 
   // Other products for "Explore More" section
-  const otherProducts = products.filter((p) => p.id !== product.id);
+  const otherProducts = allProducts.filter((p) => p.id !== product.id);
 
   // All gallery items (main + varieties)
   const galleryItems = [
@@ -150,25 +192,6 @@ function ProductDetailPage() {
                 <p>{product.description}</p>
               </div>
 
-              {/* Quick Specification Grid */}
-              <div className="specs-summary-grid">
-                <div className="spec-card">
-                  <span className="spec-label"><i className="fa-solid fa-location-dot"></i> Origin</span>
-                  <span className="spec-value">{product.origin || 'India'}</span>
-                </div>
-                <div className="spec-card">
-                  <span className="spec-label"><i className="fa-solid fa-droplet"></i> Moisture</span>
-                  <span className="spec-value">{product.moisture || 'Standard Export Grade'}</span>
-                </div>
-                <div className="spec-card">
-                  <span className="spec-label"><i className="fa-solid fa-star"></i> Purity</span>
-                  <span className="spec-value">{product.purity || 'Sortex Cleaned'}</span>
-                </div>
-                <div className="spec-card">
-                  <span className="spec-label"><i className="fa-solid fa-truck-ramp-box"></i> Supply Ability</span>
-                  <span className="spec-value">FCL &amp; Multi-Container</span>
-                </div>
-              </div>
 
               {/* Key Features List */}
               {product.keyFeatures && product.keyFeatures.length > 0 && (

@@ -1,7 +1,20 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { products } from '../data/products';
+import { getProducts, refreshProductsFromSupabase } from '../services/productsService';
 
 function ProductsPage() {
+  // Instant render from cache — never shows loading spinner
+  const [productsList, setProductsList] = useState(() => getProducts());
+  const [loading] = useState(false);
+
+  useEffect(() => {
+    let mounted = true;
+    refreshProductsFromSupabase()
+      .then((fresh) => { if (mounted && fresh?.length) setProductsList(fresh); })
+      .catch(() => {});
+    return () => { mounted = false; };
+  }, []);
+
   return (
     <>
       {/* Page Header */}
@@ -26,7 +39,7 @@ function ProductsPage() {
             <p>Explore our export portfolio. Click on any category to view detailed specifications, available varieties, packaging options, and sourcing standards.</p>
           </div>
           <div className="products-grid product-selection-grid">
-            {products.map((product) => (
+            {productsList.map((product) => (
               <article className="product-card" id={product.id} key={product.id}>
                 <div className="product-img">
                   <img src={product.cardImage || product.mainImage} alt={product.title} loading="lazy" />
