@@ -2,9 +2,6 @@ import { useEffect, useState } from 'react';
 import { supabase, isSupabaseConfigured } from '../lib/supabase';
 import { AuthContext } from './authContextInstance';
 
-const DEFAULT_ADMIN_EMAIL = 'admin@gmail.com';
-const DEFAULT_ADMIN_PASSWORD = 'admin123';
-const LOCAL_STORAGE_KEY = 'za_admin_session';
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -32,20 +29,7 @@ export function AuthProvider({ children }) {
           }
         }
 
-        // Check fallback local storage session
-        const storedLocalSession = localStorage.getItem(LOCAL_STORAGE_KEY);
-        if (storedLocalSession && mounted) {
-          try {
-            const parsed = JSON.parse(storedLocalSession);
-            if (parsed?.email === DEFAULT_ADMIN_EMAIL) {
-              setUser(parsed);
-              setSession({ user: parsed });
-            }
-          } catch (e) {
-            console.error('Error parsing stored session:', e);
-            localStorage.removeItem(LOCAL_STORAGE_KEY);
-          }
-        }
+
       } catch (err) {
         console.error('Auth initialization error:', err);
       } finally {
@@ -65,7 +49,7 @@ export function AuthProvider({ children }) {
           if (currentSession?.user) {
             setSession(currentSession);
             setUser(currentSession.user);
-          } else if (!localStorage.getItem(LOCAL_STORAGE_KEY)) {
+          } else {
             setSession(null);
             setUser(null);
           }
@@ -92,53 +76,26 @@ export function AuthProvider({ children }) {
       throw new Error(msg);
     }
 
-    // Try Supabase auth first if configured
-    if (isSupabaseConfigured && supabase) {
-      try {
-        const { data, error: supabaseError } = await supabase.auth.signInWithPassword({
-          email: cleanEmail,
-          password: cleanPassword,
-        });
-
-        if (!supabaseError && data?.user) {
-          setUser(data.user);
-          setSession(data.session);
-          localStorage.removeItem(LOCAL_STORAGE_KEY);
-          return data.user;
-        }
-
-        // If Supabase returned an error, and it doesn't match default admin credentials
-        if (cleanEmail !== DEFAULT_ADMIN_EMAIL || cleanPassword !== DEFAULT_ADMIN_PASSWORD) {
-          const errMessage = supabaseError?.message || 'Invalid email or password.';
-          setError(errMessage);
-          throw new Error(errMessage);
-        }
-      } catch (err) {
-        // If it matches default credentials, proceed with default admin fallback below
-        if (cleanEmail !== DEFAULT_ADMIN_EMAIL || cleanPassword !== DEFAULT_ADMIN_PASSWORD) {
-          setError(err.message || 'Login failed.');
-          throw err;
-        }
-      }
+    if (!isSupabaseConfigured || !supabase) {
+      const msg = 'Supabase is not configured. Cannot log in.';
+      setError(msg);
+      throw new Error(msg);
     }
 
-    // Default admin credential validation
-    if (cleanEmail === DEFAULT_ADMIN_EMAIL && cleanPassword === DEFAULT_ADMIN_PASSWORD) {
-      const adminUser = {
-        id: 'admin-za-global',
-        email: DEFAULT_ADMIN_EMAIL,
-        role: 'admin',
-        user_metadata: { name: 'ZA Global Admin' },
-      };
-      setUser(adminUser);
-      setSession({ user: adminUser });
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(adminUser));
-      return adminUser;
+    const { data, error: supabaseError } = await supabase.auth.signInWithPassword({
+      email: cleanEmail,
+      password: cleanPassword,
+    });
+
+    if (supabaseError || !data?.user) {
+      const errMessage = supabaseError?.message || 'Invalid email or password.';
+      setError(errMessage);
+      throw new Error(errMessage);
     }
 
-    const invalidMsg = 'Invalid email or password. Use default admin credentials or registered Supabase account.';
-    setError(invalidMsg);
-    throw new Error(invalidMsg);
+    setUser(data.user);
+    setSession(data.session);
+    return data.user;
   };
 
   // Logout handler
@@ -151,7 +108,6 @@ export function AuthProvider({ children }) {
     } catch (err) {
       console.warn('Supabase signOut warning:', err);
     } finally {
-      localStorage.removeItem(LOCAL_STORAGE_KEY);
       setUser(null);
       setSession(null);
     }

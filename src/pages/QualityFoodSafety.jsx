@@ -51,7 +51,7 @@ function QualityFoodSafety() {
             ))}
           </div>
           <div className="about-note compliance-note">
-            <p>Specific compliance details will be displayed only where applicable and supported by valid documentation.</p>
+            <p><strong>Quality and Food Safety Certified</strong><br />ISO 22000 &amp; HACCP certified — Ensuring the highest standards of food safety, quality and compliance across our sourcing and export operations.</p>
           </div>
         </div>
       </section>

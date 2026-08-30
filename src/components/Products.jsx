@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getHomeProducts, refreshProductsFromSupabase } from '../services/productsService';
 
 function Products() {
+  const navigate = useNavigate();
   // Instant render — only products marked visible on homepage, sorted by displayOrder
   const [productsList, setProductsList] = useState(() => getHomeProducts());
 
@@ -21,8 +22,17 @@ function Products() {
   }, []);
 
   return (
-    <section className="products section-padding bg-light">
-      <div className="container">
+    <section 
+      className="products section-padding bg-light"
+      style={{
+        backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.70)), url('/product-bg.webp')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed"
+      }}
+    >
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         <div className="section-header text-center">
           <span className="section-subtitle">OUR PRODUCTS</span>
           <h2>Quality Products. Reliable Sourcing.</h2>
@@ -49,9 +59,9 @@ function Products() {
           ))}
         </div>
         <div className="text-center" style={{ marginTop: '40px' }}>
-          <Link to="/products" className="btn btn-secondary">
+          <button onClick={() => navigate('/products')} className="btn btn-primary">
             <i className="fa-solid fa-table-cells"></i> View All Product Categories
-          </Link>
+          </button>
         </div>
       </div>
     </section>

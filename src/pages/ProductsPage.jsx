@@ -31,14 +31,23 @@ function ProductsPage() {
       </section>
 
       {/* Product Categories Selection Grid */}
-      <section className="products section-padding bg-light">
-        <div className="container">
+      <section 
+        className="products section-padding bg-light"
+        style={{
+          backgroundImage: "linear-gradient(rgba(255, 255, 255, 0.70), rgba(255, 255, 255, 0.70)), url('/product-bg.webp')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundAttachment: "fixed"
+        }}
+      >
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-header text-center">
             <span className="section-subtitle">PRODUCT CATEGORIES</span>
             <h2>Select a Product Category</h2>
             <p>Explore our export portfolio. Click on any category to view detailed specifications, available varieties, packaging options, and sourcing standards.</p>
           </div>
-          <div className="products-grid product-selection-grid">
+          <div className="products-grid">
             {productsList.map((product) => (
               <article className="product-card" id={product.id} key={product.id}>
                 <div className="product-img">
@@ -50,12 +59,8 @@ function ProductsPage() {
                   <h3>{product.title}</h3>
                   <p>{product.summary}</p>
                   <div className="product-card-footer">
-                    <Link
-                      to={`/products/${product.id}`}
-                      className="btn btn-primary btn-sm product-action"
-                      aria-label={`View details for ${product.title}`}
-                    >
-                      <i className="fa-solid fa-eye"></i> View Product
+                    <Link to={`/products/${product.id}`} className="btn btn-primary btn-sm">
+                      <i className="fa-solid fa-arrow-right"></i> View Product
                     </Link>
                   </div>
                 </div>

@@ -7,7 +7,7 @@ export const products = [
     summary: 'Premium Indian Basmati and Non-Basmati rice varieties sourced for retail, wholesale, catering, foodservice and institutional buyers worldwide.',
     cardImage: '/images/rice/rice.png',
     mainImage: '/images/rice/golden basmati rice.png',
-    origin: 'India (Punjab, Haryana, Uttar Pradesh)',
+    origin: 'India (Punjab, Haryana, Uttar Pradesh, Madhya Pradesh)',
     moisture: 'Max 12-13%',
     purity: '95% Min',
     packagingOptions: ['1 kg, 5 kg, 10 kg Retail Pouches', '20 kg, 25 kg, 50 kg PP / Non-Woven Bags', 'Customized / Private Label Packing'],
