@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProducts, getProductById, refreshProductsFromSupabase } from '../services/productsService';
 
@@ -13,6 +13,43 @@ function ProductDetailPage() {
   // Active preview image
   const [activeImage, setActiveImage] = useState('');
   const [activeImageLabel, setActiveImageLabel] = useState('');
+
+  // Thumbnail scroll/drag refs — these MUST be inside the component body
+  const thumbScrollRef = useRef(null);
+  const isDragging = useRef(false);
+  const dragStartX = useRef(0);
+  const scrollStartX = useRef(0);
+
+  const handleThumbWheel = (e) => {
+    if (thumbScrollRef.current) {
+      e.preventDefault();
+      thumbScrollRef.current.scrollLeft += e.deltaY;
+    }
+  };
+
+  const handleThumbMouseDown = (e) => {
+    isDragging.current = true;
+    dragStartX.current = e.pageX;
+    scrollStartX.current = thumbScrollRef.current.scrollLeft;
+    thumbScrollRef.current.classList.add('is-dragging');
+  };
+
+  const handleThumbMouseMove = (e) => {
+    if (!isDragging.current) return;
+    const walked = e.pageX - dragStartX.current;
+    thumbScrollRef.current.scrollLeft = scrollStartX.current - walked;
+  };
+
+  const stopThumbDrag = () => {
+    isDragging.current = false;
+    thumbScrollRef.current?.classList.remove('is-dragging');
+  };
+
+  const scrollThumbs = (direction) => {
+    if (thumbScrollRef.current) {
+      thumbScrollRef.current.scrollBy({ left: direction * 240, behavior: 'smooth' });
+    }
+  };
 
   // Set initial image when product first loads from cache
   useEffect(() => {
@@ -44,7 +81,7 @@ function ProductDetailPage() {
           setActiveImageLabel(found.title);
         }
       })
-      .catch(() => {})
+      .catch(() => { })
       .finally(() => { if (mounted) setLoading(false); });
 
     return () => { mounted = false; };
@@ -85,7 +122,7 @@ function ProductDetailPage() {
 
   // All gallery items (main + varieties)
   const galleryItems = [
-    { name: `${product.shortTitle || product.title} (Main)`, src: product.mainImage, type: 'Overview' },
+    { name: `${product.shortTitle || product.title} (1121)`, src: product.mainImage, type: 'Overview' },
     ...(product.categoryImages || []),
   ].filter((item, index, self) => item.src && self.findIndex((t) => t.src === item.src) === index);
 
@@ -136,30 +173,62 @@ function ProductDetailPage() {
                     <h4>
                       <i className="fa-solid fa-images"></i> Product Varieties &amp; Gallery
                     </h4>
-                    <span className="thumbnail-count">{galleryItems.length} Images</span>
+
                   </div>
-                  <div className="gallery-thumbnails-grid">
-                    {galleryItems.map((item, idx) => {
-                      const isSelected = activeImage === item.src;
-                      return (
-                        <button
-                          key={idx}
-                          type="button"
-                          className={`gallery-thumb-btn ${isSelected ? 'active' : ''}`}
-                          onClick={() => {
-                            setActiveImage(item.src);
-                            setActiveImageLabel(item.name);
-                          }}
-                          aria-label={`View ${item.name}`}
-                          title={`Click to view ${item.name}`}
-                        >
-                          <div className="thumb-img-wrapper">
-                            <img src={item.src} alt={item.name} loading="lazy" />
-                          </div>
-                          <span className="thumb-label">{item.name}</span>
-                        </button>
-                      );
-                    })}
+                  <div className="gallery-thumbnails-scroll-wrapper">
+                    {galleryItems.length > 4 && (
+                      <button
+                        type="button"
+                        className="thumb-scroll-arrow thumb-scroll-arrow-left"
+                        onClick={() => scrollThumbs(-1)}
+                        aria-label="Scroll thumbnails left"
+                      >
+                        <i className="fa-solid fa-chevron-left"></i>
+                      </button>
+                    )}
+
+                    <div
+                      className="gallery-thumbnails-grid"
+                      ref={thumbScrollRef}
+                      onWheel={handleThumbWheel}
+                      onMouseDown={handleThumbMouseDown}
+                      onMouseMove={handleThumbMouseMove}
+                      onMouseUp={stopThumbDrag}
+                      onMouseLeave={stopThumbDrag}
+                    >
+                      {galleryItems.map((item, idx) => {
+                        const isSelected = activeImage === item.src;
+                        return (
+                          <button
+                            key={idx}
+                            type="button"
+                            className={`gallery-thumb-btn ${isSelected ? 'active' : ''}`}
+                            onClick={() => {
+                              setActiveImage(item.src);
+                              setActiveImageLabel(item.name);
+                            }}
+                            aria-label={`View ${item.name}`}
+                            title={`Click to view ${item.name}`}
+                          >
+                            <div className="thumb-img-wrapper">
+                              <img src={item.src} alt={item.name} loading="lazy" />
+                            </div>
+                            <span className="thumb-label">{item.name}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {galleryItems.length > 4 && (
+                      <button
+                        type="button"
+                        className="thumb-scroll-arrow thumb-scroll-arrow-right"
+                        onClick={() => scrollThumbs(1)}
+                        aria-label="Scroll thumbnails right"
+                      >
+                        <i className="fa-solid fa-chevron-right"></i>
+                      </button>
+                    )}
                   </div>
                 </div>
               )}
@@ -211,7 +280,7 @@ function ProductDetailPage() {
               {/* Packaging Options */}
               {product.packagingOptions && product.packagingOptions.length > 0 && (
                 <div className="packaging-options-block">
-                  <h3>Available Packaging Formats</h3>
+                  <h3>Check the packing specification </h3>
                   <div className="packaging-tags">
                     {product.packagingOptions.map((pack, idx) => (
                       <span className="packaging-tag" key={idx}>

@@ -1,15 +1,15 @@
 const markets = [
   {
     country: 'Saudi Arabia',
-    buyers: 'Catering | Foodservice | Distribution | Wholesale | Institutional Buyers',
+    buyers: 'Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers',
   },
   {
     country: 'United Arab Emirates',
-    buyers: 'Distribution | Foodservice | Hospitality | Wholesale | Retail',
+    buyers: " Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers",
   },
   {
     country: 'Qatar',
-    buyers: 'Catering | Hospitality | Food Distribution | Institutional Supply',
+    buyers: " Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers",
   },
   {
     country: 'Kuwait',

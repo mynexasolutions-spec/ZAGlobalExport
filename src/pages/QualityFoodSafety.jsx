@@ -40,7 +40,7 @@ function QualityFoodSafety() {
           <div className="section-header text-center">
             <span className="section-subtitle">OUR QUALITY APPROACH</span>
             <h2>Supporting Successful International Supply Relationships</h2>
-            <p>We focus on understanding customer specifications, selecting appropriate suppliers, verifying requirements and coordinating export processes.</p>
+            <p style={{ maxWidth: '680px' }}>We focus on understanding customer specifications, selecting appropriate suppliers, verifying requirements and coordinating export processes.</p>
           </div>
           <div className="card-grid-3">
             {qualityItems.map((item) => (

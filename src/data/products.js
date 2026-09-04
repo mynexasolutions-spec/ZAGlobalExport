@@ -10,7 +10,7 @@ export const products = [
     origin: 'India (Punjab, Haryana, Uttar Pradesh, Madhya Pradesh)',
     moisture: 'Max 12-13%',
     purity: '95% Min',
-    packagingOptions: ['1 kg, 5 kg, 10 kg Retail Pouches', '20 kg, 25 kg, 50 kg PP / Non-Woven Bags', 'Customized / Private Label Packing'],
+    packagingOptions: ['1 kg, 5 kg, 10 kg Retail Pouches', '10 Kg, 40 Kgs, 4x10Kg PP / non Woven bags', 'Customized / Private Label Packing'],
     categoryImages: [
       { name: 'White Basmati Rice', src: '/images/rice/white basmati rice.png', type: 'Extra Long Grain' },
       { name: 'Golden Parboiled Basmati Rice', src: '/images/rice/Golden Parboiled Basmati Rice.png', type: 'Parboiled / Sella' },
@@ -61,7 +61,7 @@ export const products = [
     origin: 'India (Madhya Pradesh, Maharashtra, Rajasthan)',
     moisture: 'Max 10-12%',
     purity: '99% Sortex Cleaned',
-    packagingOptions: ['500g, 1 kg, 2 kg Consumer Pouches', '25 kg, 50 kg PP Bags', 'Jute / Custom Bulk Bags'],
+    packagingOptions: ['500g, 1 kg, 2 kg Consumer Pouches', 'Check packing size ( 15 Kg and 18 kg ) missing', 'Jute / Custom Bulk Bags'],
     categoryImages: [
       { name: 'Toor Dal (Pigeon Pea)', src: '/images/Pulses & Legumes/toor dal.png', type: 'Polished / Unpolished' },
       { name: 'Moong Dal (Yellow Lentils)', src: '/images/Pulses & Legumes/moong dal.png', type: 'Split / Washed' },

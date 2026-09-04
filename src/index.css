@@ -742,7 +742,7 @@ img {
 .page-header {
     padding: 100px 0;
     background-color: var(--secondary-color);
-    background-image: linear-gradient(to right, rgba(18,50,74,0.78) 0%, rgba(15,79,47,0.58) 100%), url('/other-banners.png');
+    background-image: linear-gradient(to right, rgba(18,50,74,0.78) 0%, rgba(15,79,47,0.58) 100%), url('/images/bg-ship4.jpg');
     background-size: cover;
     background-position: center;
     color: var(--white);
@@ -4414,5 +4414,322 @@ img {
         text-align: center;
         justify-content: center;
     }
+}
+
+.gallery-thumbnails-scroll-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gallery-thumbnails-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 12px;
+  padding: 4px 2px 12px;
+  cursor: grab;
+  scrollbar-width: thin;
+}
+
+.gallery-thumbnails-grid.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+  user-select: none;
+}
+
+.gallery-thumbnails-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.gallery-thumbnails-grid::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.gallery-thumb-btn {
+  flex: 0 0 auto;
+  width: 110px;
+}
+
+.thumb-scroll-arrow {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.thumb-scroll-arrow:hover {
+  background: var(--primary-color, #f5f5f5);
+  color: #fff;
+}
+
+.product-cert-strip {
+  padding: 20px 0;
+}
+
+.cert-strip-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: nowrap;
+}
+
+.cert-text h3 {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.cert-text p {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.cert-badges-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.cert-badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.cert-badge-item img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.cert-badge-item span {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* On small screens, allow horizontal scroll instead of wrapping/stacking */
+@media (max-width: 768px) {
+  .cert-strip-content {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .cert-badges-row {
+    overflow-x: auto;
+    width: 100%;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+  }
+}
+
+
+/* ===== About Grid & Cards ===== */
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.about-card {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.about-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.about-card-icon {
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary-color, #1f5c3f);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+}
+
+.about-card-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--primary-color, #1f5c3f);
+  display: inline-block;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--primary-color, #1f5c3f);
+}
+
+/* ===== List Items — FORCE left alignment, overriding any older
+   .about-list-item rules from the previous two-column layout ===== */
+.about-grid .about-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-grid .about-list-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  text-align: left !important;
+  gap: 14px;
+  padding: 14px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.about-grid .about-list-item:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.about-grid .about-item-icon {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(31, 92, 63, 0.1);
+  color: var(--primary-color, #1f5c3f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.about-grid .about-item-text {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  flex: 1;
+  gap: 2px;
+}
+
+.about-grid .about-item-text strong {
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  text-align: left !important;
+}
+
+.about-grid .about-item-text span {
+  color: var(--text-muted, #666);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  text-align: left !important;
+}
+
+.about-list-large .about-list-item {
+  padding: 18px 0;
+}
+
+/* ===== Quality Banner Strip (built from real product photos) ===== */
+.quality-banner {
+  position: relative;
+  margin-top: 48px;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 110px;
+  display: flex;
+}
+
+.quality-banner-side {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+.quality-banner-side.left {
+  background-image: url('/images/spices.webp');
+}
+
+.quality-banner-side.right {
+  background-image: url('/images/bananas-fresh.png');
+}
+
+.quality-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(15, 46, 30, 0.75) 0%,
+    rgba(20, 60, 40, 0.55) 30%,
+    rgba(20, 60, 40, 0.55) 70%,
+    rgba(15, 46, 30, 0.75) 100%
+  );
+}
+
+.quality-banner-content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 24px;
+  text-align: center;
+}
+
+.quality-banner-content i {
+  color: #fff;
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
+.quality-banner-content p {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-card {
+    padding: 22px 20px;
+  }
+
+  .quality-banner-content {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .quality-banner-content p {
+    font-size: 0.95rem;
+  }
 }
 

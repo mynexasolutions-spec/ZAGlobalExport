@@ -4,9 +4,18 @@ const LOCAL_CACHE_KEY = 'za_homepage_settings_v1';
 
 export const DEFAULT_HOMEPAGE_SETTINGS = {
   hero_badge: 'ZA GLOBAL EXPORTS',
-  hero_title: 'From Indian farms to the global market',
+  hero_title: 'From Indian Farms to Global Market ( word Case)',
   hero_description: 'Reliable food supply for professional buyers. We connect Indian food products with distributors, catering companies, foodservice operators, wholesalers and institutional customers across global markets.',
   hero_bg_image: '/banner-image.png',
+  hero_bg_images: [
+  '/images/bg-ship3.jpg',
+  '/images/bg-ship1.jpg',
+  '/images/bg-ship2.jpg',
+  '/images/bg-ship6.jpg',
+  '/images/bg-ship4.jpg',
+  '/images/bg-ship5.jpg',
+  // add as many as you want
+],
   hero_primary_btn_text: 'View Products',
   hero_primary_btn_link: '/products',
   hero_secondary_btn_text: 'Request a Quote',

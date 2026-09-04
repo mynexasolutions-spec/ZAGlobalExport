@@ -42,7 +42,7 @@ function Header() {
       <div className="container nav-container">
         <Link to="/" className="logo" onClick={closeMenu}>
           <img src="/ZA-logo.png" alt="ZA GLOBAL EXPORTS" />
-          <span className="logo-tagline">Connecting quality food products from India to Global Markets</span>
+          <span className="logo-tagline">Connecting Quality Food Products From India to Global Markets</span>
         </Link>
         
         <div className="menu-toggle" onClick={toggleMenu}>
