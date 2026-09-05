@@ -104,7 +104,7 @@ function ProductDetailPage() {
 
   // All gallery items (main + varieties)
   const galleryItems = [
-    { name: `${product.shortTitle || product.title} (1121)`, src: product.mainImage, type: 'Overview' },
+    { name: `${product.shortTitle || product.title}`, src: product.mainImage, type: 'Overview' },
     ...(product.categoryImages || []),
   ].filter((item, index, self) => item.src && self.findIndex((t) => t.src === item.src) === index);
 

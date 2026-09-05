@@ -2,48 +2,57 @@ const markets = [
   {
     country: 'Saudi Arabia',
     buyers: 'Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers',
+    image: '/images/markets/ci1.jpg',
   },
   {
     country: 'United Arab Emirates',
-    buyers: " Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers",
+    buyers: 'Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers',
+    image: '/images/markets/ci2.jpg',
   },
   {
     country: 'Qatar',
-    buyers: " Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers",
+    buyers: 'Catering & Hospitality | Restaurant Chains | Foodservice | Distributors | Wholesalers | Retailers | Institutional Buyers',
+    image: '/images/markets/ci3.jpg',
   },
   {
     country: 'Kuwait',
     buyers: 'Foodservice | Catering | Distribution | Wholesale',
+    image: '/images/markets/ci4.jpg',
   },
   {
     country: 'Oman',
     buyers: 'Food Distribution | Catering | Wholesale | Foodservice',
+    image: '/images/markets/ci5.jpg',
   },
   {
     country: 'Bahrain',
     buyers: 'Foodservice | Distribution | Wholesale | Hospitality',
+    image: '/images/markets/ci6.jpg',
   },
   {
     country: 'Europe',
     buyers: 'Import Distribution | Retail | Foodservice | Wholesale | Institutional Buyers',
+    image: '/images/markets/ci7.jpg',
   },
   {
     country: 'Africa',
     buyers: 'Wholesale | Distribution | Retail | Foodservice | Institutional Supply',
+    image: '/images/markets/ci8.jpg',
   },
   {
     country: 'America',
     buyers: 'Import Distribution | Retail | Foodservice | Wholesale',
+    image: '/images/markets/ci9.jpg',
   },
 ];
 
 function Markets() {
   return (
     <>
-      <section className="page-header">
+      <section className="page-header-market">
         <div className="container">
           <h1>Export Markets</h1>
-          <p>Connecting reliable Indian supply with growing global food demand.</p>
+          <p>Connecting Reliable Indian Supply With Growing Global Food Demand.</p>
         </div>
       </section>
 
@@ -54,12 +63,21 @@ function Markets() {
             <h2>Global Food Supply Focus</h2>
             <p>We support professional buyers across the Middle East and key global markets with sourcing, documentation and export coordination.</p>
           </div>
+
           <div className="card-grid-3">
             {markets.map((market) => (
               <div className="info-card market-card" key={market.country}>
-                <i className="fa-solid fa-location-dot gold-accent"></i>
-                <h3>{market.country}</h3>
-                <p>{market.buyers}</p>
+                <div className="market-card-image">
+                  <img src={market.image} alt={market.country} loading="lazy" />
+                  <div className="market-card-overlay" />
+                </div>
+                <div className="market-card-body">
+                  <h3>
+                    <i className="fa-solid fa-location-dot gold-accent"></i>
+                    {market.country}
+                  </h3>
+                  <p>{market.buyers}</p>
+                </div>
               </div>
             ))}
           </div>

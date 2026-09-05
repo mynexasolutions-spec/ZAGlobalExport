@@ -3,7 +3,7 @@ export const products = [
     id: 'rice',
     subtitle: 'PREMIUM GRAINS',
     title: 'Indian Rice Varieties',
-    shortTitle: 'Rice',
+    shortTitle: 'Rice (1121)',
     summary: 'Premium Indian Basmati and Non-Basmati rice varieties sourced for retail, wholesale, catering, foodservice and institutional buyers worldwide.',
     cardImage: '/images/rice/rice.png',
     mainImage: '/images/rice/golden basmati rice.png',

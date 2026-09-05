@@ -748,6 +748,16 @@ img {
     color: var(--white);
     text-align: center;
 }
+.page-header-market {
+    padding: 100px 0;
+    background-color: var(--secondary-color);
+    background-image: linear-gradient(to right, rgba(18,50,74,0.78) 0%, rgba(15,79,47,0.58) 100%), url('/images/market-bg.png');
+    /* background-image: url('/images/market-bg.png'); */
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    /* text-align: center; */
+}
 
 .page-header h1 {
     font-size: 3rem;
@@ -4733,3 +4743,61 @@ img {
   }
 }
 
+
+
+
+
+.market-card {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+}
+
+.market-card-image {
+  position: relative;
+  width: 100%;
+  height: 200px;
+}
+
+.market-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.market-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 60%, transparent 100%);
+}
+
+.market-card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 14px 16px;
+  color: #fff;
+}
+
+.market-card-body h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  color: #fff;
+}
+
+.market-card-body p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.3;
+  /* optional: clamp long buyer lists */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
