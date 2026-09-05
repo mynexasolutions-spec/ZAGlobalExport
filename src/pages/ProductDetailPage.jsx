@@ -162,7 +162,7 @@ function ProductDetailPage() {
                       <i className="fa-solid fa-images"></i> Product Varieties &amp; Gallery
                     </h4>
                   </div>
-                  <div className="gallery-thumbnails-scroll-wrapper "style={{ width:"800px" }}>
+                  <div className="gallery-thumbnails-scroll-wrapper "style={{ width:"700px" }}>
                     {totalThumbPages > 1 && (
                       <button
                         type="button"

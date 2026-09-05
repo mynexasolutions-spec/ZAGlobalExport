@@ -36,6 +36,7 @@ export const products = [
           'Hypermarkets & Retail Distributors',
           'Wholesale Importers & Re-packers',
           'Government & Institutional Supply Programs',
+          'Restaurants'
         ],
       },
       {
@@ -87,6 +88,7 @@ export const products = [
           'Catering & Hospitality Services',
           'Food Processing & Flour Milling Units',
           'International Relief and Institutional Feed Programs',
+          'Restaurants'
         ],
       },
       {
@@ -133,6 +135,7 @@ export const products = [
           'Supermarket Chains & Fresh Retailers',
           'Foodservice Companies & Institutional Kitchens',
           'Produce Ripening Facility Operators',
+          'Restaurants'
         ],
       },
       {
@@ -170,6 +173,7 @@ export const products = [
       { name: 'Cloves (Laung)', src: '/images/spices/cloves.png', type: 'Hand-picked Headed Cloves' },
       { name: 'Fennel (Saunf)', src: '/images/spices/fennel.png', type: 'Green / Sortex Cleaned' },
       { name: 'Mustard Seeds (Rai)', src: '/images/spices/mustard seeds.png', type: 'Black / Yellow Seeds' },
+      { name: 'Cinnamon', src: '/images/spices/Cinnamon.png', type: 'Black / Yellow Seeds' },
     ],
     description:
       'Immerse your culinary applications in the enchanting fragrance and vibrant colors of authentic Indian spices from ZA GLOBAL EXPORTS. Known as the spice capital of the world, India provides spices with unparalleled volatile oil content, aroma, and rich flavor. We supply high-grade whole spices and finely ground spice powders to discerning importers, distributors, spice blenders, and foodservice operations worldwide.',
@@ -189,6 +193,7 @@ export const products = [
           'Retail Spice Brands & Private Label Distributors',
           'Food Manufacturers, Sauce & Seasoning Makers',
           'Spice Wholesalers & Bulk Commodity Importers',
+          'Restaurants'
         ],
       },
       {
@@ -240,6 +245,7 @@ export const products = [
           'Supermarket & Hypermarket Retail Distributors',
           'Fast Food Chains & Industrial Kitchens',
           'Bulk Oil Repackers and Distributors',
+          'Restaurants'
         ],
       },
       {
@@ -288,6 +294,7 @@ export const products = [
           'Natural & Hulled Sesame Seeds',
           'Dehydrated Onion and Garlic Flakes / Powders',
           'Packaged Agricultural Commodities',
+          'Restaurants'
         ],
       },
       {
