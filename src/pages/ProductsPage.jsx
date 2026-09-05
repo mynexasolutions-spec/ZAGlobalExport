@@ -26,7 +26,7 @@ function ProductsPage() {
             <span className="breadcrumb-current">Products</span>
           </nav>
           <h1>Our Products</h1>
-          <p>Quality Indian food commodities and agricultural products sourced for global professional buyers.</p>
+          <p>Quality Indian Food Commodities and Agricultural Products Sourced for Global Professional Buyers.</p>
         </div>
       </section>
 
