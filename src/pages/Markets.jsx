@@ -51,8 +51,8 @@ function Markets() {
     <>
       <section className="page-header-market">
         <div className="container">
-          <h1>Export Markets</h1>
-          <p>Connecting Reliable Indian Supply With Growing Global Food Demand.</p>
+          {/* <h1>Export Markets</h1> */}
+          {/* <p>Connecting Reliable Indian Supply With Growing Global Food Demand.</p> */}
         </div>
       </section>
 

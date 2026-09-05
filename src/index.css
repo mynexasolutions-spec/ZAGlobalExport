@@ -69,7 +69,7 @@ img {
 }
 
 .section-padding {
-    padding: 90px 0;
+    padding: 70px 0;
 }
 
 .section-subtitle {
@@ -749,14 +749,14 @@ img {
     text-align: center;
 }
 .page-header-market {
-    padding: 100px 0;
+    padding: 400px 0;
     background-color: var(--secondary-color);
-    background-image: linear-gradient(to right, rgba(18,50,74,0.78) 0%, rgba(15,79,47,0.58) 100%), url('/images/market-bg.png');
-    /* background-image: url('/images/market-bg.png'); */
+    /* background-image: linear-gradient(to right, rgba(18,50,74,0.78) 0%, rgba(15,79,47,0.58) 100%), url('/images/markets/marker-hero.png'); */
+    background-image: url('/images/markets/marker-hero.png');
     background-size: cover;
     background-position: center;
-    color: var(--white);
-    /* text-align: center; */
+    /* color: var(--white); */
+    text-align: center;
 }
 
 .page-header h1 {
