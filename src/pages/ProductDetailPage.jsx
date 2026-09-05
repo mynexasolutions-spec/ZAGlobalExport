@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getProducts, getProductById, refreshProductsFromSupabase } from '../services/productsService';
+
+const THUMBS_PER_PAGE = 5;
 
 function ProductDetailPage() {
   const { productId } = useParams();
@@ -14,41 +16,21 @@ function ProductDetailPage() {
   const [activeImage, setActiveImage] = useState('');
   const [activeImageLabel, setActiveImageLabel] = useState('');
 
-  // Thumbnail scroll/drag refs — these MUST be inside the component body
-  const thumbScrollRef = useRef(null);
-  const isDragging = useRef(false);
-  const dragStartX = useRef(0);
-  const scrollStartX = useRef(0);
+  // Thumbnail pagination
+  const [thumbPage, setThumbPage] = useState(0);
 
-  const handleThumbWheel = (e) => {
-    if (thumbScrollRef.current) {
-      e.preventDefault();
-      thumbScrollRef.current.scrollLeft += e.deltaY;
-    }
-  };
+  // Reset pagination whenever the product changes
+  useEffect(() => {
+    setThumbPage(0);
+  }, [product?.id]);
 
-  const handleThumbMouseDown = (e) => {
-    isDragging.current = true;
-    dragStartX.current = e.pageX;
-    scrollStartX.current = thumbScrollRef.current.scrollLeft;
-    thumbScrollRef.current.classList.add('is-dragging');
-  };
-
-  const handleThumbMouseMove = (e) => {
-    if (!isDragging.current) return;
-    const walked = e.pageX - dragStartX.current;
-    thumbScrollRef.current.scrollLeft = scrollStartX.current - walked;
-  };
-
-  const stopThumbDrag = () => {
-    isDragging.current = false;
-    thumbScrollRef.current?.classList.remove('is-dragging');
-  };
-
-  const scrollThumbs = (direction) => {
-    if (thumbScrollRef.current) {
-      thumbScrollRef.current.scrollBy({ left: direction * 240, behavior: 'smooth' });
-    }
+  const goToThumbPage = (direction, totalThumbPages) => {
+    setThumbPage((prev) => {
+      const next = prev + direction;
+      if (next < 0) return 0;
+      if (next >= totalThumbPages) return totalThumbPages - 1;
+      return next;
+    });
   };
 
   // Set initial image when product first loads from cache
@@ -126,6 +108,12 @@ function ProductDetailPage() {
     ...(product.categoryImages || []),
   ].filter((item, index, self) => item.src && self.findIndex((t) => t.src === item.src) === index);
 
+  const totalThumbPages = Math.ceil(galleryItems.length / THUMBS_PER_PAGE);
+  const visibleThumbs = galleryItems.slice(
+    thumbPage * THUMBS_PER_PAGE,
+    thumbPage * THUMBS_PER_PAGE + THUMBS_PER_PAGE
+  );
+
   return (
     <div className="product-detail-page">
       {/* Page Hero Header */}
@@ -166,37 +154,29 @@ function ProductDetailPage() {
                 </div>
               </div>
 
-              {/* Thumbnails Gallery Strip Below Main Image */}
+              {/* Thumbnails Gallery — paginated, 6 per page */}
               {galleryItems.length > 1 && (
                 <div className="gallery-thumbnails-wrapper">
                   <div className="gallery-thumbnails-header">
                     <h4>
                       <i className="fa-solid fa-images"></i> Product Varieties &amp; Gallery
                     </h4>
-
                   </div>
-                  <div className="gallery-thumbnails-scroll-wrapper">
-                    {galleryItems.length > 4 && (
+                  <div className="gallery-thumbnails-scroll-wrapper "style={{ width:"800px" }}>
+                    {totalThumbPages > 1 && (
                       <button
                         type="button"
                         className="thumb-scroll-arrow thumb-scroll-arrow-left"
-                        onClick={() => scrollThumbs(-1)}
-                        aria-label="Scroll thumbnails left"
+                        onClick={() => goToThumbPage(-1, totalThumbPages)}
+                        disabled={thumbPage === 0}
+                        aria-label="Previous thumbnails"
                       >
                         <i className="fa-solid fa-chevron-left"></i>
                       </button>
                     )}
 
-                    <div
-                      className="gallery-thumbnails-grid"
-                      ref={thumbScrollRef}
-                      onWheel={handleThumbWheel}
-                      onMouseDown={handleThumbMouseDown}
-                      onMouseMove={handleThumbMouseMove}
-                      onMouseUp={stopThumbDrag}
-                      onMouseLeave={stopThumbDrag}
-                    >
-                      {galleryItems.map((item, idx) => {
+                    <div className="gallery-thumbnails-grid">
+                      {visibleThumbs.map((item, idx) => {
                         const isSelected = activeImage === item.src;
                         return (
                           <button
@@ -219,12 +199,13 @@ function ProductDetailPage() {
                       })}
                     </div>
 
-                    {galleryItems.length > 4 && (
+                    {totalThumbPages > 1 && (
                       <button
                         type="button"
                         className="thumb-scroll-arrow thumb-scroll-arrow-right"
-                        onClick={() => scrollThumbs(1)}
-                        aria-label="Scroll thumbnails right"
+                        onClick={() => goToThumbPage(1, totalThumbPages)}
+                        disabled={thumbPage === totalThumbPages - 1}
+                        aria-label="Next thumbnails"
                       >
                         <i className="fa-solid fa-chevron-right"></i>
                       </button>
@@ -260,7 +241,6 @@ function ProductDetailPage() {
                 <h3>Product Overview</h3>
                 <p>{product.description}</p>
               </div>
-
 
               {/* Key Features List */}
               {product.keyFeatures && product.keyFeatures.length > 0 && (
@@ -314,8 +294,8 @@ function ProductDetailPage() {
                 >
                   <i className="fa-solid fa-envelope"></i> Request a Quote / Inquiry
                 </Link>
-                <a
-                  href="https://wa.me/919945636964"
+                
+                  <a href="https://wa.me/919945636964"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn btn-whatsapp-direct"
