@@ -351,10 +351,6 @@ function ProductDetailPage() {
       <section className="product-cert-strip">
         <div className="container">
           <div className="cert-strip-content">
-            <div className="cert-text">
-              <h3>Certified Quality &amp; International Standards</h3>
-              <p>All export consignments meet stringent food safety and statutory export regulations.</p>
-            </div>
             <div className="cert-badges-row">
               <div className="cert-badge-item">
                 <img src="/fssai.png" alt="FSSAI Certified" />
@@ -373,6 +369,12 @@ function ProductDetailPage() {
                 <span>HACCP Certified</span>
               </div>
             </div>
+
+            <div className="cert-text">
+              <h3>Certified Quality &amp; International Standards</h3>
+              <p>All export consignments meet stringent food safety and statutory export regulations.</p>
+            </div>
+            
           </div>
         </div>
       </section>

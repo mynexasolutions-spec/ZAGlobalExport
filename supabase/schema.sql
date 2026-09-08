@@ -130,7 +130,7 @@ CREATE POLICY "Authenticated users full access queries"
 CREATE TABLE IF NOT EXISTS public.homepage_settings (
     id INTEGER PRIMARY KEY DEFAULT 1,
     hero_badge TEXT DEFAULT 'ZA GLOBAL EXPORTS',
-    hero_title TEXT DEFAULT 'From Indian farms to the global market',
+    hero_title TEXT DEFAULT 'From Indian Farms to The Global Market',
     hero_description TEXT DEFAULT 'Reliable food supply for professional buyers. We connect Indian food products with distributors, catering companies, foodservice operators, wholesalers and institutional customers across global markets.',
     hero_bg_image TEXT DEFAULT '/banner-image.png',
     hero_primary_btn_text TEXT DEFAULT 'View Products',
