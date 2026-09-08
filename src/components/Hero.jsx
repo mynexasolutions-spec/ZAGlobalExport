@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 
 function Hero({ settings }) {
   const badge = settings?.hero_badge || 'ZA GLOBAL EXPORTS';
-  const title = settings?.hero_title || 'From Indian Farms to Global Market ( word Case)';
+  const title = settings?.hero_title || 'From Indian Farms to Global Market';
   const description = settings?.hero_description || 'Reliable food supply for professional buyers. We connect Indian food products with distributors, catering companies, foodservice operators, wholesalers and institutional customers across global markets.';
   const primaryText = settings?.hero_primary_btn_text || 'View Products';
   const primaryLink = settings?.hero_primary_btn_link || '/products';

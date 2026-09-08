@@ -4,7 +4,7 @@ const LOCAL_CACHE_KEY = 'za_homepage_settings_v1';
 
 export const DEFAULT_HOMEPAGE_SETTINGS = {
   hero_badge: 'ZA GLOBAL EXPORTS',
-  hero_title: 'From Indian Farms to Global Market ( word Case)',
+  hero_title: 'From Indian Farms to Global Market',
   hero_description: 'Reliable food supply for professional buyers. We connect Indian food products with distributors, catering companies, foodservice operators, wholesalers and institutional customers across global markets.',
   hero_bg_image: '/banner-image.png',
   hero_bg_images: [
