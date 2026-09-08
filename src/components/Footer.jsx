@@ -8,7 +8,7 @@ function Footer() {
           <div className="footer-col about-col">
             <Link to="/" className="logo footer-logo">
               <img src="/ZA-logo.png" alt="ZA GLOBAL EXPORTS" />
-              <span className="logo-tagline">Connecting quality food products from India to Global Markets</span>
+              <span className="logo-tagline">Connecting Quality Food Products From India to Global Markets</span>
             </Link>
             <p>Quality Food Products | Reliable Supply | Global Partnerships.</p>
             <div className="social-links">
