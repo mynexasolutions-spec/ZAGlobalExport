@@ -62,7 +62,7 @@ export const products = [
     origin: 'India (Madhya Pradesh, Maharashtra, Rajasthan)',
     moisture: 'Max 10-12%',
     purity: '99% Sortex Cleaned',
-    packagingOptions: ['500g, 1 kg, 2 kg Consumer Pouches', 'Check packing size ( 15 Kg and 18 kg ) missing', 'Jute / Custom Bulk Bags'],
+    packagingOptions: ['500g, 1 kg, 2 kg Consumer Pouches', '15 kg, 18 kg PP Bags', 'Jute / Custom Bulk Bags'],
     categoryImages: [
       { name: 'Toor Dal (Pigeon Pea)', src: '/images/Pulses & Legumes/toor dal.png', type: 'Polished / Unpolished' },
       { name: 'Moong Dal (Yellow Lentils)', src: '/images/Pulses & Legumes/moong dal.png', type: 'Split / Washed' },
@@ -173,7 +173,7 @@ export const products = [
       { name: 'Cloves (Laung)', src: '/images/spices/cloves.png', type: 'Hand-picked Headed Cloves' },
       { name: 'Fennel (Saunf)', src: '/images/spices/fennel.png', type: 'Green / Sortex Cleaned' },
       { name: 'Mustard Seeds (Rai)', src: '/images/spices/mustard seeds.png', type: 'Black / Yellow Seeds' },
-      { name: 'Cinnamon', src: '/images/spices/Cinnamon.png', type: 'Black / Yellow Seeds' },
+      { name: 'Cinnamon', src: '/images/spices/Cinnamon.png', type: 'Whole Quills / Ground Powder' },
     ],
     description:
       'Immerse your culinary applications in the enchanting fragrance and vibrant colors of authentic Indian spices from ZA GLOBAL EXPORTS. Known as the spice capital of the world, India provides spices with unparalleled volatile oil content, aroma, and rich flavor. We supply high-grade whole spices and finely ground spice powders to discerning importers, distributors, spice blenders, and foodservice operations worldwide.',
@@ -287,6 +287,16 @@ export const products = [
     ],
     groups: [
       {
+        heading: 'Suitable For',
+        items: [
+          'Food Importers & Distributors',
+          'Flour Mills & Processing Units',
+          'Wholesale Grain Traders',
+          'Retail & Institutional Buyers',
+          'Restaurants',
+        ],
+      },
+      {
         heading: 'Possible Sourcing Inquiries',
         items: [
           'Wheat, Maize, Sorghum and Millet Grains',
@@ -294,7 +304,6 @@ export const products = [
           'Natural & Hulled Sesame Seeds',
           'Dehydrated Onion and Garlic Flakes / Powders',
           'Packaged Agricultural Commodities',
-          'Restaurants'
         ],
       },
       {

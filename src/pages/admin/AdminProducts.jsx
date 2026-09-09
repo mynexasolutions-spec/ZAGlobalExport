@@ -20,7 +20,7 @@ const DEFAULT_FORM_STATE = {
   groups: [
     {
       heading: 'Suitable For',
-      items: ['Catering Companies', 'Foodservice Operators', 'Wholesalers & Distributors'],
+      items: ['Catering Companies', 'Foodservice Operators', 'Wholesalers & Distributors', 'Restaurants'],
     },
   ],
   showOnHome: true,
@@ -97,7 +97,7 @@ function AdminProducts() {
       groups: Array.isArray(product.groups) && product.groups.length > 0 ? [...product.groups] : [
         {
           heading: 'Suitable For',
-          items: ['Catering Companies', 'Foodservice Operators', 'Wholesalers & Distributors'],
+          items: ['Catering Companies', 'Foodservice Operators', 'Wholesalers & Distributors', 'Restaurants'],
         },
       ],
       showOnHome: product.showOnHome !== false,
@@ -207,6 +207,34 @@ function AdminProducts() {
     setFormData((prev) => ({
       ...prev,
       keyFeatures: prev.keyFeatures.filter((_, i) => i !== index),
+    }));
+  };
+
+  const suitableForItems = formData.groups.find((g) => g.heading === 'Suitable For')?.items || [];
+
+  const handleAddSuitableFor = (e) => {
+    if (e.key === 'Enter' && e.target.value.trim()) {
+      e.preventDefault();
+      const value = e.target.value.trim();
+      setFormData((prev) => {
+        const hasGroup = prev.groups.some((g) => g.heading === 'Suitable For');
+        const groups = hasGroup
+          ? prev.groups.map((g) =>
+              g.heading === 'Suitable For' ? { ...g, items: [...g.items, value] } : g
+            )
+          : [{ heading: 'Suitable For', items: [value] }, ...prev.groups];
+        return { ...prev, groups };
+      });
+      e.target.value = '';
+    }
+  };
+
+  const handleRemoveSuitableFor = (index) => {
+    setFormData((prev) => ({
+      ...prev,
+      groups: prev.groups.map((g) =>
+        g.heading === 'Suitable For' ? { ...g, items: g.items.filter((_, i) => i !== index) } : g
+      ),
     }));
   };
 
@@ -773,6 +801,25 @@ function AdminProducts() {
                       type="text"
                       placeholder="Add sourcing feature..."
                       onKeyDown={handleAddFeature}
+                      className="admin-tag-input"
+                    />
+                  </div>
+                </div>
+
+                {/* Suitable For */}
+                <div className="admin-form-group" style={{ marginTop: '12px' }}>
+                  <label>Suitable For (Type and press Enter to add, e.g. Restaurants)</label>
+                  <div className="admin-tags-input-box">
+                    {suitableForItems.map((item, idx) => (
+                      <span className="admin-tag-chip" key={idx}>
+                        <i className="fa-solid fa-utensils"></i> {item}
+                        <button type="button" onClick={() => handleRemoveSuitableFor(idx)}>&times;</button>
+                      </span>
+                    ))}
+                    <input
+                      type="text"
+                      placeholder="Add buyer type (e.g. Restaurants)..."
+                      onKeyDown={handleAddSuitableFor}
                       className="admin-tag-input"
                     />
                   </div>
