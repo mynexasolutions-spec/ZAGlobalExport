@@ -65,6 +65,9 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} ZA GLOBAL EXPORTS. All Rights Reserved.</p>
+          <p className="footer-credit">
+            Developed by <a href="https://www.nexa-solutions.in/" target="_blank" rel="noopener noreferrer">Nexa Solutions</a>
+          </p>
         </div>
       </div>
     </footer>

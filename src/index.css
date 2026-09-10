@@ -1928,6 +1928,20 @@ img {
     color: var(--primary-color);
 }
 
+.footer-credit {
+    margin-top: 4px;
+    font-size: 0.82rem;
+}
+
+.footer-credit a {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.footer-credit a:hover {
+    text-decoration: underline;
+}
+
 /* Floating WhatsApp */
 .floating-whatsapp {
     position: fixed;
