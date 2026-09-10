@@ -28,7 +28,7 @@ const qualityItems = [
 function QualityFoodSafety() {
   return (
     <>
-      <section className="page-header">
+      <section className="page-header quality-hero">
         <div className="container">
           <h1>Quality &amp; Food Safety</h1>
           <p>Quality is our commitment throughout sourcing, packaging, documentation and export coordination.</p>

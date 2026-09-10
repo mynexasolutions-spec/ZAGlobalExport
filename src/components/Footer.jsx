@@ -65,10 +65,6 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <p>&copy; {new Date().getFullYear()} ZA GLOBAL EXPORTS. All Rights Reserved.</p>
-          <div className="footer-bottom-links">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms &amp; Conditions</Link>
-          </div>
         </div>
       </div>
     </footer>

@@ -74,7 +74,7 @@ function Markets() {
       </div></section>
       <section className="markets-cta"><div className="markets-wrap markets-cta-content"><div><i className="fa-solid fa-globe" /><span><strong>Let&apos;s Grow Your Business Together</strong><small>Partner with us for reliable sourcing, quality products and seamless supply solutions.</small></span></div><Link className="markets-cta-button" to="/contact">Contact Us Today <i className="fa-solid fa-arrow-right" /></Link></div></section>
       <section className="section-padding">
-        <div className="container">
+        <div className="markets-wrap">
           <div className="about-card markets-approach">
             <h3>Our Approach</h3>
             <p>We focus on understanding destination-market requirements, including product specifications, packaging, documentation, shipment requirements and customer expectations.</p>

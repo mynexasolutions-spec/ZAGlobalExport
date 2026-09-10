@@ -31,7 +31,7 @@ function Hero({ settings }) {
   }, [images.length]);
 
   const overlayGradient =
-    'linear-gradient(to right, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0) 100%)';
+    'linear-gradient(to right, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0.42) 45%, rgba(255,255,255,0) 100%)';
 
   return (
     <section className="hero">

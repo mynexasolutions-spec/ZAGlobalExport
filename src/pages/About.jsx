@@ -2,8 +2,9 @@ function About() {
   return (
     <>
       {/* Page Header */}
-      <section className="page-header">
+      <section className="page-header about-hero">
         <div className="container">
+          <span className="about-hero-badge"><i className="fa-solid fa-earth-asia"></i> Global Food Exporters</span>
           <h1>About Us</h1>
           <p>Connecting Indian food products to global markets.</p>
         </div>
@@ -24,157 +25,180 @@ function About() {
             <p>ZA GLOBAL EXPORTS — Bringing quality, nutrition, and freshness from trusted sources to the world.</p>
           </div>
 
+          <div className="foundation-header">
+            <span className="foundation-eyebrow">Our Foundation</span>
+            <h2>Building Trust. Delivering Quality.</h2>
+            <div className="foundation-divider">
+              <span className="foundation-divider-line"></span>
+              <i className="fa-solid fa-leaf"></i>
+              <span className="foundation-divider-line"></span>
+            </div>
+          </div>
+
           <div className="about-grid">
 
-            <div className="about-card">
-              <div className="about-card-header">
-                <span className="about-card-icon">
-                  <i className="fa-solid fa-earth-americas"></i>
-                </span>
-                <h3>About ZA GLOBAL EXPORTS</h3>
+            <div className="about-column">
+
+              <div className="about-card">
+                <div className="about-card-header">
+                  <span className="about-card-icon">
+                    <i className="fa-solid fa-earth-americas"></i>
+                  </span>
+                  <h3>About ZA GLOBAL EXPORTS</h3>
+                </div>
+
+                <ul className="about-list">
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-bullseye"></i></span>
+                    <div className="about-item-text">
+                      <strong>Business Focus</strong>
+                    <span>Indian food and agricultural exports</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-leaf"></i></span>
+                    <div className="about-item-text">
+                      <strong>Core Products</strong>
+                      <span>Rice, pulses, fresh produce and other food products</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-users"></i></span>
+                    <div className="about-item-text">
+                      <strong>Customers</strong>
+                      <span>Distributors, catering companies, wholesalers, retailers and institutional buyers</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-globe"></i></span>
+                    <div className="about-item-text">
+                      <strong>Markets</strong>
+                      <span>Middle East and global food markets</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-handshake"></i></span>
+                    <div className="about-item-text">
+                      <strong>Approach</strong>
+                      <span>Reliable sourcing, clear communication and professional export support</span>
+                    </div>
+                  </li>
+                </ul>
               </div>
 
-              <ul className="about-list">
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-bullseye"></i></span>
-                  <div className="about-item-text">
-                    <strong>Business Focus</strong>
-                  <span>Indian food and agricultural exports</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-leaf"></i></span>
-                  <div className="about-item-text">
-                    <strong>Core Products</strong>
-                    <span>Rice, pulses, fresh produce and other food products</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-users"></i></span>
-                  <div className="about-item-text">
-                    <strong>Customers</strong>
-                    <span>Distributors, catering companies, wholesalers, retailers and institutional buyers</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-globe"></i></span>
-                  <div className="about-item-text">
-                    <strong>Markets</strong>
-                    <span>Middle East and global food markets</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-handshake"></i></span>
-                  <div className="about-item-text">
-                    <strong>Approach</strong>
-                    <span>Reliable sourcing, clear communication and professional export support</span>
-                  </div>
-                </li>
-              </ul>
+              <div className="about-card">
+                <div className="about-card-header">
+                  <span className="about-card-icon">
+                    <i className="fa-solid fa-shield-halved"></i>
+                  </span>
+                  <h3>What We Stand For</h3>
+                </div>
+
+                <ul className="about-list">
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-scale-balanced"></i></span>
+                    <div className="about-item-text">
+                      <strong>Integrity</strong>
+                      <span>Honesty, transparency and professionalism in every discussion.</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-award"></i></span>
+                    <div className="about-item-text">
+                      <strong>Quality</strong>
+                      <span>Commitment to agreed product and service requirements.</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-shield-heart"></i></span>
+                    <div className="about-item-text">
+                      <strong>Reliability</strong>
+                      <span>Dependable coordination for professional food buyers.</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
             </div>
 
-            <div className="about-card">
-              <div className="about-card-header">
-                <span className="about-card-icon">
-                  <i className="fa-solid fa-mountain-sun"></i>
-                </span>
-                <h3>Vision &amp; Mission</h3>
+            <div className="about-column">
+
+              <div className="about-card">
+                <div className="about-card-header">
+                  <span className="about-card-icon">
+                    <i className="fa-solid fa-mountain-sun"></i>
+                  </span>
+                  <h3>Vision &amp; Mission</h3>
+                </div>
+
+                <ul className="about-list about-list-large">
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-eye"></i></span>
+                    <div className="about-item-text">
+                      <strong>Vision</strong>
+                      <span>To become a trusted international food supply partner connecting India's quality agricultural and food products with customers across the Middle East and global markets.</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-crosshairs"></i></span>
+                    <div className="about-item-text">
+                      <strong>Mission</strong>
+                      <span>To source and supply quality food products responsibly, efficiently and competitively while building long-term relationships with customers, suppliers and business partners.</span>
+                    </div>
+                  </li>
+                </ul>
               </div>
 
-              <ul className="about-list about-list-large">
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-eye"></i></span>
-                  <div className="about-item-text">
-                    <strong>Vision</strong>
-                    <span>To become a trusted international food supply partner connecting India's quality agricultural and food products with customers across the Middle East and global markets.</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-crosshairs"></i></span>
-                  <div className="about-item-text">
-                    <strong>Mission</strong>
-                    <span>To source and supply quality food products responsibly, efficiently and competitively while building long-term relationships with customers, suppliers and business partners.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
+              <div className="about-card">
+                <div className="about-card-header">
+                  <span className="about-card-icon">
+                    <i className="fa-solid fa-people-group"></i>
+                  </span>
+                  <h3>Partnership Focus</h3>
+                </div>
 
-            <div className="about-card">
-              <div className="about-card-header">
-                <span className="about-card-icon">
-                  <i className="fa-solid fa-shield-halved"></i>
-                </span>
-                <h3>What We Stand For</h3>
+                <ul className="about-list">
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-user"></i></span>
+                    <div className="about-item-text">
+                      <strong>Customer Focus</strong>
+                      <span>Solutions developed around buyer specifications, packaging, quantity and destination needs.</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-chart-line"></i></span>
+                    <div className="about-item-text">
+                      <strong>Improvement</strong>
+                      <span>Continuous effort to improve sourcing, service and supply efficiency.</span>
+                    </div>
+                  </li>
+                  <li className="about-list-item">
+                    <span className="about-item-icon"><i className="fa-solid fa-handshake-angle"></i></span>
+                    <div className="about-item-text">
+                      <strong>Long-Term Partnership</strong>
+                      <span>Relationships built on trust, performance and mutual growth.</span>
+                    </div>
+                  </li>
+                </ul>
               </div>
 
-              <ul className="about-list">
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-scale-balanced"></i></span>
-                  <div className="about-item-text">
-                    <strong>Integrity</strong>
-                    <span>Honesty, transparency and professionalism in every discussion.</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-award"></i></span>
-                  <div className="about-item-text">
-                    <strong>Quality</strong>
-                    <span>Commitment to agreed product and service requirements.</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-shield-heart"></i></span>
-                  <div className="about-item-text">
-                    <strong>Reliability</strong>
-                    <span>Dependable coordination for professional food buyers.</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div className="about-card">
-              <div className="about-card-header">
-                <span className="about-card-icon">
-                  <i className="fa-solid fa-people-group"></i>
-                </span>
-                <h3>Partnership Focus</h3>
-              </div>
-
-              <ul className="about-list">
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-user"></i></span>
-                  <div className="about-item-text">
-                    <strong>Customer Focus</strong>
-                    <span>Solutions developed around buyer specifications, packaging, quantity and destination needs.</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-chart-line"></i></span>
-                  <div className="about-item-text">
-                    <strong>Improvement</strong>
-                    <span>Continuous effort to improve sourcing, service and supply efficiency.</span>
-                  </div>
-                </li>
-                <li className="about-list-item">
-                  <span className="about-item-icon"><i className="fa-solid fa-handshake-angle"></i></span>
-                  <div className="about-item-text">
-                    <strong>Long-Term Partnership</strong>
-                    <span>Relationships built on trust, performance and mutual growth.</span>
-                  </div>
-                </li>
-              </ul>
             </div>
 
           </div>
 
           {/* Quality Banner Strip */}
           <div className="quality-banner">
-            <div className="quality-banner-side left"></div>
-            {/* <div className="quality-banner-side right"></div> */}
-            <div className="quality-banner-overlay"></div>
-            <div className="quality-banner-content">
-              <i className="fa-solid fa-leaf"></i>
-              <p>Quality at the source. Purity in every step.<br />Trust in every delivery.</p>
+            <div className="quality-banner-inner">
+              <div className="quality-banner-side left"></div>
+              <div className="quality-banner-side right"></div>
+              <div className="quality-banner-overlay"></div>
+              <div className="quality-banner-content">
+                <span className="quality-banner-line left"></span>
+                <p>Quality at the source. Purity in every step.<br />Trust in every delivery.</p>
+                <span className="quality-banner-line right"></span>
+              </div>
+            </div>
+            <div className="quality-banner-badge">
               <i className="fa-solid fa-leaf"></i>
             </div>
           </div>
