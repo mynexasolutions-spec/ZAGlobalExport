@@ -21,6 +21,8 @@ import QualityFoodSafety from './pages/QualityFoodSafety';
 import Markets from './pages/Markets';
 import ExportLogistics from './pages/ExportLogistics';
 import ScrollToTop from './components/ScrollToTop';
+import SeoManager from './components/SeoManager';
+import NotFound from './pages/NotFound';
 
 function AppContent() {
   const location = useLocation();
@@ -29,6 +31,7 @@ function AppContent() {
   return (
     <>
       <ScrollToTop />
+      <SeoManager />
       {!isAdminRoute && <Header />}
       <main className={isAdminRoute ? 'admin-root-main' : ''}>
         <Routes>
@@ -59,6 +62,8 @@ function AppContent() {
             <Route path="queries" element={<AdminQueries />} />
             <Route path="homepage" element={<AdminHomepage />} />
           </Route>
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       {!isAdminRoute && <Footer />}
